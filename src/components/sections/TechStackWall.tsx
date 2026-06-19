@@ -9,7 +9,7 @@ import { fadeUp, defaultTransition, viewportOnce } from "@/lib/motion";
 
 export default function TechStackWall() {
   return (
-    <section className="section-padding border-t border-white/[0.06]">
+    <section className="section-padding section-divider">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <Reveal>
           <SectionHeading

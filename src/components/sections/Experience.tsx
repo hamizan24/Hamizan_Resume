@@ -8,7 +8,7 @@ import { fadeUp, defaultTransition, viewportOnce } from "@/lib/motion";
 
 export default function Experience() {
   return (
-    <section id="experience" className="section-padding scroll-mt-24 border-t border-white/[0.06]">
+    <section id="experience" className="section-padding section-divider scroll-mt-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <Reveal>
           <SectionHeading
@@ -36,7 +36,7 @@ export default function Experience() {
                 transition={defaultTransition}
                 className="relative pl-8 md:pl-12"
               >
-                <span className="absolute left-0 top-6 h-[18px] w-[18px] rounded-full border-2 border-accent bg-background md:h-[22px] md:w-[22px]" />
+                <span className="absolute left-0 top-6 h-[18px] w-[18px] rounded-full border-2 border-accent bg-white md:h-[22px] md:w-[22px]" />
 
                 <div className="glass glass-hover rounded-2xl p-6 md:p-8">
                   <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">

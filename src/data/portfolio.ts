@@ -128,7 +128,7 @@ export const homelab = {
       label: "DevOps & Automation",
       description:
         "Linux command-line, Bash scripting, Docker containerization, Git & GitHub, and CI/CD pipeline concepts (Jenkins, GitHub Actions).",
-      accent: "#00d4aa",
+      accent: "#1e40af",
       categories: [
         {
           title: "Virtualization",

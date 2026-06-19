@@ -9,7 +9,7 @@ import { fadeUp, defaultTransition, viewportOnce } from "@/lib/motion";
 
 export default function Certifications() {
   return (
-    <section id="certifications" className="section-padding scroll-mt-20 border-t border-white/[0.06] sm:scroll-mt-24">
+    <section id="certifications" className="section-padding section-divider scroll-mt-20 sm:scroll-mt-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <Reveal>
           <SectionHeading
@@ -41,7 +41,7 @@ export default function Certifications() {
               {careerGoals.map((goal) => (
                 <span
                   key={goal}
-                  className="glass rounded-full px-4 py-2 text-sm font-medium text-foreground ring-1 ring-accent/20 sm:px-5 sm:py-2.5"
+                  className="glass rounded-full px-4 py-2 text-sm font-medium text-foreground ring-1 ring-border sm:px-5 sm:py-2.5"
                 >
                   {goal}
                 </span>
@@ -57,7 +57,7 @@ export default function Certifications() {
         </Reveal>
 
         <div className="relative">
-          <div className="absolute bottom-0 left-4 top-0 w-px bg-white/[0.08] md:left-1/2 md:-translate-x-px" />
+          <div className="absolute bottom-0 left-4 top-0 w-px bg-border md:left-1/2 md:-translate-x-px" />
 
           <motion.div
             initial="hidden"
@@ -76,7 +76,7 @@ export default function Certifications() {
                 }`}
               >
                 <div className="hidden w-1/2 md:block" />
-                <span className="absolute left-4 top-6 z-10 h-3 w-3 -translate-x-1/2 rounded-full bg-accent ring-4 ring-background md:left-1/2" />
+                <span className="absolute left-4 top-6 z-10 h-3 w-3 -translate-x-1/2 rounded-full bg-accent ring-4 ring-white md:left-1/2" />
 
                 <div className="w-full pl-10 md:w-1/2 md:pl-0">
                   <div
@@ -94,7 +94,7 @@ export default function Certifications() {
                       {item.items.map((skill) => (
                         <span
                           key={skill}
-                          className="rounded-lg bg-accent/5 px-3 py-1.5 text-xs text-muted ring-1 ring-accent/10"
+                          className="rounded-lg bg-slate-50 px-3 py-1.5 text-xs text-muted ring-1 ring-border"
                         >
                           {skill}
                         </span>

@@ -3,17 +3,17 @@
 @tailwind utilities;
 
 :root {
-  --background: #050810;
-  --foreground: #e8edf5;
-  --muted: #8b9cb3;
-  --accent: #00d4aa;
-  --accent-secondary: #3b82f6;
-  --accent-glow: rgba(0, 212, 170, 0.15);
-  --border: rgba(255, 255, 255, 0.08);
-  --glass: rgba(255, 255, 255, 0.04);
-  --glass-hover: rgba(255, 255, 255, 0.07);
-  --surface: rgba(15, 23, 42, 0.6);
-  --grid-line: rgba(0, 212, 170, 0.04);
+  --background: #f1f5f9;
+  --foreground: #0f172a;
+  --muted: #64748b;
+  --accent: #1e40af;
+  --accent-secondary: #2563eb;
+  --accent-glow: rgba(30, 64, 175, 0.12);
+  --border: #e2e8f0;
+  --glass: #ffffff;
+  --glass-hover: #f8fafc;
+  --surface: #ffffff;
+  --grid-line: rgba(30, 64, 175, 0.04);
 }
 
 * {
@@ -21,43 +21,37 @@
 }
 
 html {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 body {
   color: var(--foreground);
-  background: radial-gradient(ellipse 80% 50% at 50% -20%, #0a1628 0%, var(--background) 70%);
+  background: linear-gradient(180deg, #ffffff 0%, var(--background) 45%, #eef2f7 100%);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
   overflow-x: hidden;
   min-height: 100vh;
 }
 
 ::selection {
-  background: rgba(0, 212, 170, 0.25);
-  color: #fff;
+  background: rgba(30, 64, 175, 0.15);
+  color: var(--foreground);
 }
 
 @layer components {
   .glass {
-    @apply border border-white/[0.08] bg-white/[0.04] backdrop-blur-md;
-  }
-
-  @media (min-width: 768px) {
-    .glass {
-      @apply backdrop-blur-xl;
-    }
+    @apply border border-border bg-white shadow-sm;
   }
 
   .glass-hover {
-    @apply transition-colors duration-200 hover:bg-white/[0.06];
+    @apply transition-all duration-200 hover:bg-slate-50 hover:shadow-md;
   }
 
   .glass-hover:hover {
-    border-color: rgba(0, 212, 170, 0.3);
+    border-color: rgba(30, 64, 175, 0.25);
   }
 
   .gradient-text {
-    background: linear-gradient(to right, var(--accent), #6ee7b7, var(--accent-secondary));
+    background: linear-gradient(135deg, #1e40af 0%, #2563eb 50%, #0d9488 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -67,15 +61,24 @@ body {
     @apply py-14 sm:py-20 md:py-28;
   }
 
-  .cyber-grid {
-    background-image:
-      linear-gradient(var(--grid-line) 1px, transparent 1px),
-      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-    background-size: 48px 48px;
+  .section-divider {
+    @apply border-t border-border;
   }
 
   .glow-accent {
-    box-shadow: 0 0 40px var(--accent-glow);
+    box-shadow: 0 4px 14px var(--accent-glow);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-accent-secondary hover:shadow-md;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-lg border border-border bg-white px-5 py-2.5 text-sm font-semibold text-foreground shadow-sm transition-all hover:bg-slate-50;
+  }
+
+  .btn-secondary:hover {
+    border-color: rgba(30, 64, 175, 0.3);
   }
 }
 

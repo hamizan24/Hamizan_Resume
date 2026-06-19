@@ -19,9 +19,9 @@ export default function SkillLevelBar({ name, level, index }: SkillLevelBarProps
     <li ref={ref} className="space-y-1.5">
       <div className="flex items-center justify-between gap-2 text-xs">
         <span className="text-muted">{name}</span>
-        <span className="shrink-0 font-mono text-[10px] text-accent">{label}</span>
+        <span className="shrink-0 font-mono text-[10px] font-medium text-accent">{label}</span>
       </div>
-      <div className="h-1.5 overflow-hidden rounded-full bg-white/[0.06]">
+      <div className="h-1.5 overflow-hidden rounded-full bg-slate-200">
         <motion.div
           className="h-full rounded-full bg-gradient-to-r from-accent to-accent-secondary"
           initial={{ width: 0 }}

@@ -8,7 +8,7 @@ type TechLogoProps = {
   color: string;
 };
 
-const MUTED = "#8b9cb3";
+const MUTED = "#94a3b8";
 
 function withAlpha(hex: string, alpha: number) {
   const h = hex.replace("#", "");
@@ -29,11 +29,10 @@ export default function TechLogo({ name, slug, color }: TechLogoProps) {
       onMouseLeave={() => setHovered(false)}
     >
       <div
-        className="glass flex h-16 w-16 items-center justify-center rounded-xl border p-3 transition-all duration-300 md:h-20 md:w-20"
+        className="flex h-16 w-16 items-center justify-center rounded-xl border border-border bg-white p-3 shadow-sm transition-all duration-300 md:h-20 md:w-20"
         style={{
           borderColor: hovered ? withAlpha(color, 0.45) : undefined,
-          boxShadow: hovered ? `0 0 28px ${withAlpha(color, 0.2)}` : undefined,
-          backgroundColor: hovered ? withAlpha(color, 0.06) : undefined,
+          boxShadow: hovered ? `0 8px 24px ${withAlpha(color, 0.15)}` : undefined,
         }}
       >
         <div
@@ -44,7 +43,7 @@ export default function TechLogo({ name, slug, color }: TechLogoProps) {
             backgroundColor: hovered ? color : MUTED,
             WebkitMask: `url(${iconUrl}) no-repeat center / contain`,
             mask: `url(${iconUrl}) no-repeat center / contain`,
-            transform: hovered ? "scale(1.1)" : "scale(1)",
+            transform: hovered ? "scale(1.08)" : "scale(1)",
           }}
         />
       </div>

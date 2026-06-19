@@ -26,7 +26,7 @@ export default function About() {
               <p className="mt-4 flex-1 text-sm leading-relaxed text-muted sm:text-base">
                 {profile.intro}
               </p>
-              <p className="mt-4 border-t border-white/[0.06] pt-4 text-sm text-muted">
+              <p className="mt-4 border-t border-border pt-4 text-sm text-muted">
                 {profile.location}
               </p>
             </GlassCard>

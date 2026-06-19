@@ -8,7 +8,7 @@ import { fadeUp, defaultTransition, viewportOnce } from "@/lib/motion";
 
 export default function Projects() {
   return (
-    <section id="projects" className="section-padding scroll-mt-24 border-t border-white/[0.06]">
+    <section id="projects" className="section-padding section-divider scroll-mt-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <Reveal>
           <SectionHeading
@@ -36,7 +36,7 @@ export default function Projects() {
               }`}
             >
               {project.personal && (
-                <span className="mb-3 w-fit rounded-full bg-accent-secondary/10 px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-accent-secondary ring-1 ring-accent-secondary/20">
+                <span className="mb-3 w-fit rounded-full bg-blue-50 px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-accent ring-1 ring-blue-100">
                   Personal Project
                 </span>
               )}
@@ -56,7 +56,7 @@ export default function Projects() {
                 {project.tech.map((tech) => (
                   <span
                     key={tech}
-                    className="rounded-lg bg-white/[0.04] px-2.5 py-1 text-xs text-muted ring-1 ring-white/[0.06]"
+                    className="rounded-lg bg-slate-50 px-2.5 py-1 text-xs text-muted ring-1 ring-border"
                   >
                     {tech}
                   </span>

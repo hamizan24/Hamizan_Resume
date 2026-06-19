@@ -25,7 +25,7 @@ export default function Homelab() {
     homelab.studyTracks.find((t) => t.id === activeId) ?? homelab.studyTracks[0];
 
   return (
-    <section id="homelab" className="section-padding scroll-mt-20 border-t border-white/[0.06] sm:scroll-mt-24">
+    <section id="homelab" className="section-padding section-divider scroll-mt-20 sm:scroll-mt-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <Reveal>
           <SectionHeading
@@ -47,14 +47,14 @@ export default function Homelab() {
                   onClick={() => setActiveId(track.id)}
                   className={`relative rounded-xl px-4 py-3 text-left text-sm font-medium transition-all duration-300 sm:px-5 sm:py-3.5 sm:text-base ${
                     isActive
-                      ? "glass text-foreground ring-1"
-                      : "border border-white/[0.06] bg-white/[0.02] text-muted hover:bg-white/[0.04] hover:text-foreground"
+                      ? "glass text-foreground shadow-md ring-1 ring-accent/20"
+                      : "border border-border bg-slate-50 text-muted hover:border-accent/20 hover:bg-white hover:text-foreground"
                   }`}
                   style={
                     isActive
                       ? {
                           borderColor: `${track.accent}40`,
-                          boxShadow: `0 0 24px ${track.accent}15`,
+                          boxShadow: `0 4px 20px ${track.accent}18`,
                         }
                       : undefined
                   }
@@ -122,7 +122,7 @@ export default function Homelab() {
                         {cat.items.map((item) => (
                           <li
                             key={item}
-                            className="rounded-md bg-white/[0.04] px-2 py-1 text-xs text-muted"
+                            className="rounded-md bg-slate-50 px-2 py-1 text-xs text-muted ring-1 ring-border"
                           >
                             {item}
                           </li>
@@ -170,7 +170,7 @@ function ArchitectureDiagram({
   const nodeMap = Object.fromEntries(nodes.map((n) => [n.id, n]));
 
   return (
-    <div className="relative min-h-[200px] w-full overflow-x-auto overflow-y-hidden rounded-xl bg-white/[0.02] ring-1 ring-white/[0.06] sm:min-h-0 sm:aspect-[16/10]">
+    <div className="relative min-h-[200px] w-full overflow-x-auto overflow-y-hidden rounded-xl border border-border bg-slate-50 sm:min-h-0 sm:aspect-[16/10]">
       <svg
         viewBox="0 0 100 90"
         className="h-full min-w-[280px] w-full sm:min-w-0"
@@ -202,16 +202,16 @@ function ArchitectureDiagram({
               width="16"
               height="8"
               rx="1.5"
-              fill="rgba(255,255,255,0.04)"
+              fill="rgba(255,255,255,0.95)"
               stroke={node.color}
-              strokeWidth="0.3"
-              strokeOpacity="0.6"
+              strokeWidth="0.4"
+              strokeOpacity="0.8"
             />
             <text
               x={node.x}
               y={node.y + 5}
               textAnchor="middle"
-              fill="#8b9cb3"
+              fill="#475569"
               fontSize="2.2"
               fontFamily="monospace"
             >

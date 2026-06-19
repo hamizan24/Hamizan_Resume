@@ -30,20 +30,22 @@ export default function Header() {
   const linkClass = (href: string) =>
     `relative rounded-lg px-2.5 py-2 text-sm transition-colors xl:px-3 ${
       activeSection === href
-        ? "text-accent"
-        : "text-muted hover:bg-white/[0.05] hover:text-foreground"
+        ? "font-medium text-accent"
+        : "text-muted hover:bg-slate-100 hover:text-foreground"
     }`;
 
   return (
     <motion.header
-      initial={{ y: -20, opacity: 0 }}
+      initial={{ y: -16, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className={`fixed inset-x-0 top-0.5 z-50 transition-colors duration-200 ${
-        scrolled ? "glass border-b border-white/[0.08] shadow-lg shadow-black/20" : "bg-transparent"
+      transition={{ duration: 0.4 }}
+      className={`fixed inset-x-0 top-0.5 z-50 transition-all duration-200 ${
+        scrolled
+          ? "border-b border-border bg-white/95 shadow-sm backdrop-blur-sm"
+          : "bg-white/80 backdrop-blur-sm"
       }`}
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 sm:py-4">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 sm:py-3.5">
         <a
           href="#"
           className="group flex items-center gap-2"
@@ -52,10 +54,10 @@ export default function Header() {
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
         >
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent/10 font-mono text-sm font-bold text-accent ring-1 ring-accent/30">
+          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent text-sm font-bold text-white shadow-sm">
             MH
           </span>
-          <span className="hidden text-sm font-medium text-foreground sm:block">
+          <span className="hidden text-sm font-semibold text-foreground sm:block">
             Hamizan<span className="text-accent">.</span>
           </span>
         </a>
@@ -83,7 +85,7 @@ export default function Header() {
         <a
           href="#contact"
           onClick={(e) => handleNavClick(e, "#contact")}
-          className="hidden rounded-lg bg-accent/10 px-4 py-2 text-sm font-medium text-accent ring-1 ring-accent/30 transition-all hover:bg-accent/20 lg:inline-flex"
+          className="hidden rounded-lg bg-accent px-4 py-2 text-sm font-medium text-white shadow-sm transition-all hover:bg-accent-secondary lg:inline-flex"
         >
           Contact Me
         </a>
@@ -105,7 +107,7 @@ export default function Header() {
         <motion.nav
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: "auto" }}
-          className="glass border-t border-white/[0.08] px-4 py-4 sm:px-6 lg:hidden"
+          className="border-t border-border bg-white px-4 py-4 sm:px-6 lg:hidden"
         >
           <ul className="flex flex-col gap-1">
             {navLinks.map((link) => (
@@ -114,8 +116,8 @@ export default function Header() {
                   href={link.href}
                   className={`block rounded-lg px-3 py-2.5 text-sm ${
                     activeSection === link.href
-                      ? "bg-accent/10 text-accent"
-                      : "text-muted hover:bg-white/[0.05] hover:text-foreground"
+                      ? "bg-accent/10 font-medium text-accent"
+                      : "text-muted hover:bg-slate-50 hover:text-foreground"
                   }`}
                   onClick={(e) => handleNavClick(e, link.href)}
                 >
@@ -126,7 +128,7 @@ export default function Header() {
             <li>
               <a
                 href="#contact"
-                className="mt-2 block rounded-lg bg-accent/10 px-3 py-2.5 text-center text-sm font-medium text-accent"
+                className="mt-2 block rounded-lg bg-accent px-3 py-2.5 text-center text-sm font-medium text-white"
                 onClick={(e) => handleNavClick(e, "#contact")}
               >
                 Contact Me

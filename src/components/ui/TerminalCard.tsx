@@ -5,11 +5,11 @@ import { stats } from "@/data/portfolio";
 import { useReducedMotion } from "@/lib/hooks";
 
 const lines = [
-  { prompt: "$ whoami", output: "hamizan@infrastructure" },
-  { prompt: "$ uptime", output: "99%+ server availability" },
-  { prompt: "$ experience", output: "3+ years IT & infrastructure" },
-  { prompt: "$ role", output: "DevOps transition in progress" },
-  { prompt: "$ status", output: "Open to opportunities" },
+  { prompt: "Status", output: "Open to opportunities" },
+  { prompt: "Experience", output: "3+ years IT & infrastructure" },
+  { prompt: "Uptime", output: "99%+ server availability" },
+  { prompt: "Focus", output: "DevOps & automation transition" },
+  { prompt: "Location", output: "Shah Alam, Selangor" },
 ];
 
 export default function TerminalCard() {
@@ -27,35 +27,34 @@ export default function TerminalCard() {
       count += 1;
       setVisibleLines(count);
       if (count >= lines.length) clearInterval(interval);
-    }, 400);
+    }, 350);
 
     return () => clearInterval(interval);
   }, [reducedMotion]);
 
   return (
-    <div className="glass overflow-hidden rounded-2xl ring-1 ring-white/[0.08]">
-      <div className="flex items-center gap-2 border-b border-white/[0.06] bg-white/[0.03] px-4 py-3">
-        <span className="h-2.5 w-2.5 rounded-full bg-red-500/70" />
-        <span className="h-2.5 w-2.5 rounded-full bg-yellow-500/70" />
-        <span className="h-2.5 w-2.5 rounded-full bg-green-500/70" />
-        <span className="ml-2 font-mono text-[10px] text-muted">hamizan@homelab ~</span>
+    <div className="overflow-hidden rounded-2xl border border-border bg-white shadow-md ring-1 ring-slate-100">
+      <div className="flex items-center justify-between border-b border-border bg-slate-50 px-4 py-3">
+        <p className="text-xs font-semibold uppercase tracking-wider text-foreground">
+          Professional Overview
+        </p>
+        <span className="rounded-full bg-emerald-100 px-2.5 py-0.5 text-[10px] font-medium text-emerald-700">
+          Active
+        </span>
       </div>
 
-      <div className="space-y-2 p-4 font-mono text-xs sm:p-5 sm:text-sm">
+      <div className="space-y-3 p-4 sm:p-5">
         {lines.slice(0, visibleLines).map((line) => (
-          <div key={line.prompt}>
-            <p className="text-accent-secondary">{line.prompt}</p>
-            <p className="text-muted">&gt; {line.output}</p>
+          <div key={line.prompt} className="flex items-start justify-between gap-4 border-b border-slate-100 pb-3 last:border-0 last:pb-0">
+            <span className="text-xs font-medium text-muted">{line.prompt}</span>
+            <span className="text-right text-xs font-medium text-foreground">{line.output}</span>
           </div>
         ))}
-        {visibleLines < lines.length && (
-          <span className="inline-block h-4 w-2 animate-pulse bg-accent" />
-        )}
       </div>
 
-      <div className="grid grid-cols-2 gap-2 border-t border-white/[0.06] bg-white/[0.02] p-3 sm:grid-cols-3">
+      <div className="grid grid-cols-3 gap-2 border-t border-border bg-slate-50/80 p-3">
         {stats.slice(0, 3).map((stat) => (
-          <div key={stat.label} className="rounded-lg bg-white/[0.03] px-2 py-2 text-center">
+          <div key={stat.label} className="rounded-lg border border-border bg-white px-2 py-2 text-center">
             <p className="text-sm font-bold text-accent">{stat.value}</p>
             <p className="text-[10px] leading-tight text-muted">{stat.label}</p>
           </div>

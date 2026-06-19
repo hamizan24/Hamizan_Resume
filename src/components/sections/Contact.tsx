@@ -35,7 +35,7 @@ const contacts = [
 
 export default function Contact() {
   return (
-    <section id="contact" className="section-padding scroll-mt-24 border-t border-white/[0.06]">
+    <section id="contact" className="section-padding section-divider scroll-mt-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <Reveal>
           <SectionHeading
