@@ -18,7 +18,7 @@ const geistMono = localFont({
   display: "swap",
 });
 
-const title = `${profile.name} | DevOps & Infrastructure Engineer`;
+const title = `${profile.name} | IT Support & Infrastructure Engineer`;
 const description = profile.intro;
 
 export const metadata: Metadata = {

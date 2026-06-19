@@ -45,6 +45,7 @@ export default function Experience() {
                         {job.role}
                       </h3>
                       <p className="text-accent">{job.company}</p>
+                      <p className="text-xs text-muted">{job.location}</p>
                     </div>
                     <span className="shrink-0 font-mono text-xs text-muted md:text-sm">
                       {job.period}

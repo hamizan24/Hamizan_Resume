@@ -1,13 +1,15 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { motion } from "framer-motion";
 import { navLinks } from "@/data/portfolio";
-import { scrollToSection } from "@/lib/hooks";
+import { scrollToSection, useActiveSection } from "@/lib/hooks";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const sectionIds = useMemo(() => navLinks.map((l) => l.href), []);
+  const activeSection = useActiveSection(sectionIds);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -25,12 +27,19 @@ export default function Header() {
     [],
   );
 
+  const linkClass = (href: string) =>
+    `relative rounded-lg px-2.5 py-2 text-sm transition-colors xl:px-3 ${
+      activeSection === href
+        ? "text-accent"
+        : "text-muted hover:bg-white/[0.05] hover:text-foreground"
+    }`;
+
   return (
     <motion.header
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-200 ${
+      className={`fixed inset-x-0 top-0.5 z-50 transition-colors duration-200 ${
         scrolled ? "glass border-b border-white/[0.08] shadow-lg shadow-black/20" : "bg-transparent"
       }`}
     >
@@ -57,9 +66,16 @@ export default function Header() {
               key={link.href}
               href={link.href}
               onClick={(e) => handleNavClick(e, link.href)}
-              className="rounded-lg px-2.5 py-2 text-sm text-muted transition-colors hover:bg-white/[0.05] hover:text-foreground xl:px-3"
+              className={linkClass(link.href)}
             >
               {link.label}
+              {activeSection === link.href && (
+                <motion.span
+                  layoutId="nav-indicator"
+                  className="absolute inset-x-2 -bottom-0.5 h-0.5 rounded-full bg-accent"
+                  transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                />
+              )}
             </a>
           ))}
         </nav>
@@ -96,7 +112,11 @@ export default function Header() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="block rounded-lg px-3 py-2.5 text-sm text-muted hover:bg-white/[0.05] hover:text-foreground"
+                  className={`block rounded-lg px-3 py-2.5 text-sm ${
+                    activeSection === link.href
+                      ? "bg-accent/10 text-accent"
+                      : "text-muted hover:bg-white/[0.05] hover:text-foreground"
+                  }`}
                   onClick={(e) => handleNavClick(e, link.href)}
                 >
                   {link.label}

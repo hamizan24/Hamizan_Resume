@@ -1,113 +1,133 @@
 export const profile = {
   name: "Muhammad Hamizan Bin Borhan",
-  roles: ["Infrastructure", "DevOps Enthusiast", "Junior Developer"],
+  roles: [
+    "IT Support Specialist",
+    "Infrastructure Engineer",
+    "DevOps Transition",
+  ],
+  location: "Bukit Jelutong, Shah Alam, Selangor",
+  phone: "+60 14-266 5643",
   intro:
-    "Results-driven IT Support Specialist and Infrastructure Engineer with over 3 years of experience in network administration, virtualization, server management, system security, and enterprise IT support. Passionate about DevOps, automation, cloud technologies, and modern web development.",
+    "Results-driven IT Support Specialist and Infrastructure Engineer with 3+ years of hands-on experience in network administration, server management, virtualization, and system security. Proven ability to maintain high system availability, manage IT infrastructure, and collaborate with cross-functional teams and vendors on technology upgrades.",
   about:
-    "An Infrastructure Engineer transitioning into DevOps and Full Stack Development. Experienced in Linux administration, Windows Server, VMware, Hyper-V, networking, cybersecurity, Docker, Git, Jenkins, Grafana, and modern web technologies.",
-  email: "hamizan.borhan@gmail.com",
+    "Actively transitioning into a DevOps role, with practical skills in Linux administration, VMware/Hyper-V virtualization, network configuration, and automation tooling. Committed to bridging infrastructure operations with modern DevOps practices to improve deployment efficiency, system reliability, and operational performance.",
+  email: "hamizan.borhan2000@gmail.com",
   linkedin: "https://www.linkedin.com/in/muhammad-hamizan-borhan",
   github: "https://github.com/hamizan24",
-  whatsapp: "https://wa.me/60123456789",
+  whatsapp: "https://wa.me/60142665643",
   resumeUrl: "/resume.pdf",
   footerTagline:
     "Building reliable infrastructure, automating workflows, and creating modern digital solutions.",
+  tagline: "Bridging Infrastructure Operations with Modern DevOps",
 } as const;
 
+export const socialProof = [
+  "Foxboro (M) Sdn Bhd",
+  "Barika Technology",
+  "ILP Network Technology",
+  "UITM Puncak Alam",
+] as const;
+
 export const stats = [
-  { value: "20+", label: "Docker Containers" },
-  { value: "10+", label: "Virtual Machines" },
-  { value: "3+", label: "Years Infrastructure Experience" },
-  { value: "5+", label: "DevOps Projects" },
-  { value: "99%", label: "Uptime Monitoring" },
+  { value: "3+", label: "Years IT Experience" },
+  { value: "99%", label: "Server Uptime Target" },
+  { value: "20+", label: "Homelab Containers" },
+  { value: "10+", label: "Virtual Machines Managed" },
+  { value: "5+", label: "Personal Dev Projects" },
 ] as const;
 
 export const skillCategories = [
   {
-    title: "Infrastructure",
+    title: "Infrastructure & Systems",
     icon: "server",
     skills: [
-      "Windows Server",
-      "Linux Administration",
-      "VMware",
-      "Hyper-V",
-      "Active Directory",
-      "DNS",
-      "DHCP",
-      "Network Troubleshooting",
+      { name: "Linux Administration", level: 88 },
+      { name: "Windows Server", level: 90 },
+      { name: "Active Directory", level: 85 },
+      { name: "VMware vSphere", level: 87 },
+      { name: "Hyper-V", level: 85 },
+      { name: "Server Configuration", level: 90 },
+      { name: "Patch Management", level: 88 },
+      { name: "Performance Monitoring", level: 86 },
     ],
   },
   {
-    title: "Networking",
+    title: "Networking & Security",
     icon: "network",
     skills: [
-      "Cisco Switching",
-      "VLAN",
-      "Routing",
-      "TCP/IP",
-      "Fiber Optic",
-      "Structured Cabling",
-      "Network Security",
-      "Ekahau Site Survey",
+      { name: "TCP/IP & OSI Model", level: 88 },
+      { name: "VLANs & Routing", level: 85 },
+      { name: "Fiber Optic Cabling", level: 82 },
+      { name: "Structured Cabling", level: 84 },
+      { name: "Ethernet Switching", level: 86 },
+      { name: "OTDR & Power Meter", level: 80 },
+      { name: "Endpoint Security", level: 83 },
+      { name: "Ekahau Site Survey", level: 78 },
     ],
   },
   {
-    title: "DevOps",
+    title: "DevOps & Automation",
     icon: "devops",
     skills: [
-      "Docker",
-      "Jenkins",
-      "Git",
-      "GitHub",
-      "GitLab",
-      "CI/CD",
-      "Bash Scripting",
-      "Linux",
-      "Monitoring",
+      { name: "Bash / Shell Scripting", level: 65 },
+      { name: "CI/CD Concepts", level: 58 },
+      { name: "Docker (Foundational)", level: 55 },
+      { name: "Git Version Control", level: 62 },
+      { name: "GitHub", level: 65 },
+      { name: "Jenkins", level: 50 },
+      { name: "GitHub Actions", level: 52 },
+      { name: "Infrastructure-as-Code Concepts", level: 48 },
     ],
   },
   {
-    title: "Monitoring & Observability",
+    title: "Tools & Platforms",
     icon: "monitor",
     skills: [
-      "Grafana",
-      "Prometheus",
-      "Log Analysis",
-      "System Monitoring",
+      { name: "Ticketing & Asset Management", level: 85 },
+      { name: "IT Budgeting", level: 78 },
+      { name: "Vendor Coordination", level: 88 },
+      { name: "PPM Scheduling", level: 86 },
+      { name: "CCTV Systems", level: 82 },
+      { name: "Access Control", level: 84 },
+      { name: "Barrier Gate Systems", level: 80 },
+      { name: "Log Analysis", level: 75 },
     ],
   },
   {
     title: "Development",
     icon: "code",
     skills: [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "React.js",
-      "Node.js",
-      "Express.js",
-      "REST API",
-      "WordPress",
-      "Elementor",
+      { name: "HTML & CSS", level: 70 },
+      { name: "JavaScript", level: 58 },
+      { name: "React.js", level: 55 },
+      { name: "Node.js", level: 52 },
+      { name: "Express.js", level: 50 },
+      { name: "REST API", level: 52 },
+      { name: "WordPress", level: 65 },
+      { name: "Elementor", level: 68 },
     ],
   },
   {
     title: "Database",
     icon: "database",
-    skills: ["MySQL", "PostgreSQL", "Supabase"],
+    skills: [
+      { name: "MySQL", level: 55 },
+      { name: "PostgreSQL", level: 48 },
+      { name: "Supabase", level: 45 },
+    ],
   },
 ] as const;
 
 export const homelab = {
   title: "Homelab Study",
   subtitle:
-    "Hands-on learning environment for DevOps automation and full stack development.",
+    "Self-development activities building DevOps and full stack skills on top of a solid infrastructure foundation.",
   studyTracks: [
     {
       id: "devops",
       label: "DevOps & Automation",
       description:
-        "Self-hosted pipelines, container orchestration, and infrastructure monitoring.",
+        "Linux command-line, Bash scripting, Docker containerization, Git & GitHub, and CI/CD pipeline concepts (Jenkins, GitHub Actions).",
       accent: "#00d4aa",
       categories: [
         {
@@ -124,7 +144,7 @@ export const homelab = {
         },
         {
           title: "Monitoring",
-          items: ["Grafana", "Prometheus"],
+          items: ["Grafana", "Prometheus", "Log Analysis"],
         },
         {
           title: "Version Control",
@@ -160,7 +180,7 @@ export const homelab = {
       id: "fullstack",
       label: "Full Stack Developer",
       description:
-        "End-to-end web applications with modern frontend, backend APIs, and databases.",
+        "Personal and homelab projects exploring modern web development alongside core infrastructure skills.",
       accent: "#3b82f6",
       categories: [
         {
@@ -205,30 +225,57 @@ export const homelab = {
   ],
 } as const;
 
+export const education = [
+  {
+    degree: "Diploma Kemahiran Malaysia — Network Technology",
+    school: "Institut Latihan Perindustrian (ILP)",
+    period: "Jan 2020 — Jun 2022",
+    highlights: [
+      "Server configuration and management",
+      "Router and routing protocol configuration",
+      "Computer system and network procurement",
+    ],
+  },
+  {
+    degree: "Sijil Kemahiran Malaysia — Network Cabling & Infrastructure",
+    school: "Institut Latihan Perindustrian (ILP) — Tangkak",
+    period: "Jun 2018 — Dec 2019",
+    highlights: [
+      "Fiber optic installation, termination, and testing",
+      "Structured cabling design (TIA/EIA standards)",
+      "Network fundamentals and Ethernet switching",
+    ],
+  },
+] as const;
+
 export const experience = [
   {
     company: "Foxboro (M) Sdn Bhd",
+    location: "Bukit Jelutong",
     role: "IT Technical Support Engineer",
     period: "Nov 2023 — Present",
     achievements: [
-      "Server administration",
-      "Linux and Windows management",
-      "VMware and Hyper-V virtualization",
-      "Security monitoring",
-      "IT infrastructure support",
-      "Vendor coordination",
+      "Delivered Tier-1 and Tier-2 IT support across all departments within defined SLAs",
+      "Administered Windows/Linux servers with 99%+ uptime through proactive maintenance and patching",
+      "Managed VMware and Hyper-V environments, provisioning VMs for business applications",
+      "Led vendor coordination for IT hardware and software upgrades on schedule and within budget",
+      "Operated endpoint security and antivirus platforms with proactive log analysis",
+      "Contributed to IT asset lifecycle management — procurement through decommissioning",
+      "Supported IT budget planning and resource allocation with cost-saving opportunities",
     ],
   },
   {
     company: "Barika Technology",
+    location: "UITM Puncak Alam (Deployed)",
     role: "IT Technician",
     period: "Jan 2022 — Oct 2023",
     achievements: [
-      "Campus network infrastructure",
-      "Fiber optic troubleshooting",
-      "CCTV systems",
-      "Access control systems",
-      "Preventive maintenance",
+      "Maintained campus network infrastructure with minimal downtime across multi-building facilities",
+      "Executed PPM schedule for barrier gates, CCTV, and access control systems",
+      "Troubleshot fiber optic networks using OTDR and power meter testing equipment",
+      "Managed and audited access card systems for secure facility entry",
+      "Produced technical reports supporting equipment replacement and procurement decisions",
+      "Monitored and enhanced CCTV system performance across campus premises",
     ],
   },
 ] as const;
@@ -236,10 +283,11 @@ export const experience = [
 export const projects = [
   {
     featured: true,
+    personal: true,
     name: "FSM Pro",
     subtitle: "Field Service Management System",
     description:
-      "Enterprise field service platform for work order management, technician tracking, and customer operations.",
+      "Personal full stack project — enterprise-style field service platform for work order management, technician tracking, and customer operations.",
     tech: ["React", "Node.js", "Express", "MySQL"],
     features: [
       "Work Order Management",
@@ -252,10 +300,11 @@ export const projects = [
   },
   {
     featured: true,
+    personal: true,
     name: "Homelab DevOps Environment",
     subtitle: "Personal Infrastructure Lab",
     description:
-      "Self-hosted DevOps environment with containerized services, CI/CD pipelines, and full-stack monitoring stack.",
+      "Self-hosted lab for learning containerization, CI/CD pipeline concepts, and monitoring — available to demonstrate upon request.",
     tech: ["Docker", "Jenkins", "GitHub", "Grafana", "Prometheus", "Linux"],
     features: [],
     github: null,
@@ -263,11 +312,12 @@ export const projects = [
   },
   {
     featured: true,
+    personal: true,
     name: "Business Website Development",
-    subtitle: "Client Web Solutions",
+    subtitle: "Client & Personal Web Projects",
     description:
-      "Custom business websites with modern design, responsive layouts, and tailored functionality for clients.",
-    tech: ["WordPress", "Elementor", "Custom Development"],
+      "WordPress and custom web solutions with responsive layouts and tailored functionality for business clients.",
+    tech: ["WordPress", "Elementor", "HTML", "CSS"],
     features: [],
     github: null,
     demo: null,
@@ -276,31 +326,31 @@ export const projects = [
 
 export const careerGoals = [
   "DevOps Engineer",
-  "Cloud Engineer",
   "Infrastructure Engineer",
-  "Full Stack Developer",
+  "Cloud Engineer",
+  "IT Support Engineer",
 ] as const;
 
-export const certifications = [
+export const devopsReadiness = [
   {
-    title: "Infrastructure & Virtualization",
-    year: "2022 — Present",
-    items: ["VMware ESXi", "Hyper-V", "Windows Server", "Linux Administration"],
+    title: "Linux & Scripting",
+    year: "Self-Development",
+    items: ["Linux CLI", "Bash Scripting", "Task Automation"],
   },
   {
-    title: "Networking & Security",
-    year: "2022 — Present",
-    items: ["Cisco Switching", "VLAN & Routing", "Network Security", "Ekahau Site Survey"],
+    title: "Containerization",
+    year: "Self-Development",
+    items: ["Docker Fundamentals", "Docker Compose", "Container Concepts"],
   },
   {
-    title: "DevOps & Automation",
-    year: "2023 — Present",
-    items: ["Docker & Containers", "Jenkins CI/CD", "Git & GitHub", "Grafana & Prometheus"],
+    title: "Version Control & CI/CD",
+    year: "Self-Development",
+    items: ["Git & GitHub", "Jenkins Concepts", "GitHub Actions"],
   },
   {
-    title: "Full Stack Development",
-    year: "2024 — Present",
-    items: ["React.js", "Node.js & Express", "REST API", "MySQL & PostgreSQL"],
+    title: "Web Development",
+    year: "Personal Projects",
+    items: ["HTML & CSS", "React.js", "Node.js & Express", "REST API"],
   },
 ] as const;
 
@@ -310,14 +360,12 @@ export const techStack = [
   { name: "Grafana", slug: "grafana", color: "#F46800" },
   { name: "Prometheus", slug: "prometheus", color: "#E6522C" },
   { name: "GitHub", slug: "github", color: "#ffffff" },
-  { name: "GitLab", slug: "gitlab", color: "#FC6D26" },
-  { name: "React", slug: "react", color: "#61DAFB" },
-  { name: "Node.js", slug: "nodedotjs", color: "#339933" },
   { name: "Linux", slug: "linux", color: "#FCC624" },
   { name: "VMware", slug: "vmware", color: "#607078" },
   { name: "Hyper-V", slug: "microsoft", color: "#0078D4" },
+  { name: "React", slug: "react", color: "#61DAFB" },
+  { name: "Node.js", slug: "nodedotjs", color: "#339933" },
   { name: "MySQL", slug: "mysql", color: "#4479A1" },
-  { name: "Supabase", slug: "supabase", color: "#3FCF8E" },
   { name: "WordPress", slug: "wordpress", color: "#21759B" },
 ] as const;
 
@@ -327,7 +375,7 @@ export const navLinks = [
   { href: "#homelab", label: "Homelab Study" },
   { href: "#experience", label: "Experience" },
   { href: "#projects", label: "Projects" },
-  { href: "#certifications", label: "Certifications" },
+  { href: "#certifications", label: "Education" },
   { href: "#contact", label: "Contact" },
 ] as const;
 
@@ -335,9 +383,9 @@ export const seoKeywords = [
   "DevOps Engineer Malaysia",
   "Infrastructure Engineer Malaysia",
   "IT Support Engineer Malaysia",
-  "Full Stack Developer Malaysia",
   "Network Engineer Malaysia",
-  "Muhammad Hamizan Borhan",
-  "DevOps Enthusiast",
-  "Homelab Engineer",
+  "Muhammad Hamizan Bin Borhan",
+  "IT Technician Shah Alam",
+  "VMware Hyper-V Malaysia",
+  "Homelab DevOps",
 ] as const;

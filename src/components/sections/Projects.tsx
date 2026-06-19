@@ -14,8 +14,8 @@ export default function Projects() {
           <SectionHeading
             id="projects-heading"
             label="Projects"
-            title="Featured work"
-            subtitle="Selected projects spanning full stack development, DevOps, and client solutions."
+            title="Personal & homelab projects"
+            subtitle="Self-initiated projects for learning and skill development — available to demonstrate upon request."
           />
         </Reveal>
 
@@ -35,7 +35,12 @@ export default function Projects() {
                 i === 0 ? "lg:col-span-2 lg:row-span-1" : ""
               }`}
             >
-              {project.featured && (
+              {project.personal && (
+                <span className="mb-3 w-fit rounded-full bg-accent-secondary/10 px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-accent-secondary ring-1 ring-accent-secondary/20">
+                  Personal Project
+                </span>
+              )}
+              {project.featured && !project.personal && (
                 <span className="mb-3 w-fit rounded-full bg-accent/10 px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-accent ring-1 ring-accent/20">
                   Featured
                 </span>

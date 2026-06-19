@@ -27,7 +27,7 @@ const contacts = [
   },
   {
     label: "WhatsApp",
-    value: "Send a message",
+    value: profile.phone,
     href: profile.whatsapp,
     icon: "whatsapp",
   },

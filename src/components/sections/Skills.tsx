@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { skillCategories } from "@/data/portfolio";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/ui/Reveal";
+import SkillLevelBar from "@/components/ui/SkillLevelBar";
 import { staggerContainer, fadeUp, defaultTransition, viewportOnce } from "@/lib/motion";
 
 const icons: Record<string, ReactNode> = {
@@ -42,14 +43,14 @@ const icons: Record<string, ReactNode> = {
 
 export default function Skills() {
   return (
-    <section id="skills" className="section-padding scroll-mt-24 border-t border-white/[0.06]">
+    <section id="skills" className="section-padding scroll-mt-20 border-t border-white/[0.06] sm:scroll-mt-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <Reveal>
           <SectionHeading
             id="skills-heading"
             label="Skills"
             title="Technical expertise"
-            subtitle="Core competencies across infrastructure, networking, DevOps, and development."
+            subtitle="Proficiency levels based on professional experience and ongoing self-development."
           />
         </Reveal>
 
@@ -58,29 +59,29 @@ export default function Skills() {
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
-          className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
+          className="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3"
         >
           {skillCategories.map((category) => (
             <motion.div
               key={category.title}
               variants={fadeUp}
               transition={defaultTransition}
-              className="glass glass-hover group rounded-2xl p-6"
+              className="glass glass-hover group rounded-2xl p-5 sm:p-6"
             >
-              <div className="mb-4 flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10 text-accent ring-1 ring-accent/20 transition-colors group-hover:bg-accent/15">
+              <div className="mb-5 flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10 text-accent ring-1 ring-accent/20">
                   {icons[category.icon]}
                 </div>
                 <h3 className="font-semibold text-foreground">{category.title}</h3>
               </div>
-              <ul className="flex flex-wrap gap-2">
-                {category.skills.map((skill) => (
-                  <li
-                    key={skill}
-                    className="rounded-lg bg-white/[0.04] px-2.5 py-1 text-xs text-muted ring-1 ring-white/[0.06] transition-colors group-hover:text-foreground/80"
-                  >
-                    {skill}
-                  </li>
+              <ul className="space-y-3">
+                {category.skills.map((skill, i) => (
+                  <SkillLevelBar
+                    key={skill.name}
+                    name={skill.name}
+                    level={skill.level}
+                    index={i}
+                  />
                 ))}
               </ul>
             </motion.div>
