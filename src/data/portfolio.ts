@@ -10,7 +10,7 @@ export const profile = {
   intro:
     "Results-driven IT Support Specialist and Infrastructure Engineer with 3+ years of hands-on experience in network administration, server management, virtualization, and system security. Proven ability to maintain high system availability, manage IT infrastructure, and collaborate with cross-functional teams and vendors on technology upgrades.",
   about:
-    "Actively transitioning into a DevOps role, with practical skills in Linux administration, VMware/Hyper-V virtualization, network configuration, and automation tooling. Committed to bridging infrastructure operations with modern DevOps practices to improve deployment efficiency, system reliability, and operational performance.",
+    "Actively transitioning into a DevOps role, with practical skills in Linux administration, VMware/Hyper-V virtualization, network configuration, and automation tooling. Also building modern web portfolios with React, Next.js, and AI-assisted development practices.",
   email: "hamizan.borhan2000@gmail.com",
   linkedin: "https://www.linkedin.com/in/muhammad-hamizan-borhan",
   github: "https://github.com/hamizan24",
@@ -19,8 +19,6 @@ export const profile = {
   footerTagline:
     "Building reliable infrastructure, automating workflows, and creating modern digital solutions.",
   tagline: "Bridging Infrastructure Operations with Modern DevOps",
-  siteBuiltWith:
-    "Built with React & Next.js using an AI-assisted development workflow for faster delivery, code optimization, and enhanced productivity.",
 } as const;
 
 export const socialProof = [
@@ -101,14 +99,14 @@ export const skillCategories = [
     skills: [
       { name: "HTML & CSS", level: 70 },
       { name: "JavaScript", level: 58 },
-      { name: "React.js", level: 55 },
-      { name: "Next.js", level: 58 },
-      { name: "TypeScript", level: 52 },
+      { name: "React.js", level: 62 },
+      { name: "Next.js", level: 65 },
+      { name: "TypeScript", level: 55 },
+      { name: "Tailwind CSS", level: 60 },
       { name: "Node.js", level: 52 },
-      { name: "Express.js", level: 50 },
-      { name: "REST API", level: 52 },
+      { name: "AI-Assisted Development", level: 58 },
+      { name: "Vercel Deployment", level: 60 },
       { name: "WordPress", level: 65 },
-      { name: "Elementor", level: 68 },
     ],
   },
   {
@@ -205,6 +203,7 @@ export const homelab = {
         },
       ],
       projects: [
+        "Online Portfolio & Resume Website",
         "React Full Stack Applications",
         "FSM Management System",
         "WordPress Business Websites",
@@ -288,16 +287,16 @@ export const projects = [
   {
     featured: true,
     personal: true,
-    name: "Online Portfolio Website",
-    subtitle: "Personal Resume & Portfolio",
+    name: "Online Portfolio & Resume Website",
+    subtitle: "Professional Portfolio — This Site",
     description:
-      "Designed and developed this responsive portfolio using React and Next.js. Applied an AI-assisted development workflow to accelerate delivery, optimize code quality, and improve development productivity. Deployed via GitHub and Vercel with SEO optimization.",
+      "Built with React and Next.js using an AI-assisted development workflow for faster delivery, code optimization, and enhanced productivity. Features responsive design, SEO optimization, and Vercel deployment.",
     tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
     features: [
-      "Responsive Corporate UI",
-      "SEO & Performance Optimized",
-      "GitHub + Vercel Deployment",
-      "AI-Assisted Development Workflow",
+      "Responsive corporate UI",
+      "SEO & metadata optimized",
+      "Resume PDF download",
+      "AI-assisted dev workflow",
     ],
     github: "https://github.com/hamizan24/Hamizan_Resume",
     demo: null,
@@ -371,7 +370,13 @@ export const devopsReadiness = [
   {
     title: "Web Development",
     year: "Personal Projects",
-    items: ["React.js", "Next.js", "AI-Assisted Workflow", "REST API"],
+    items: [
+      "HTML & CSS",
+      "React.js & Next.js",
+      "TypeScript",
+      "AI-Assisted Development",
+      "Vercel Deployment",
+    ],
   },
 ] as const;
 
@@ -385,7 +390,9 @@ export const techStack = [
   { name: "VMware", slug: "vmware", color: "#607078" },
   { name: "Hyper-V", slug: "microsoft", color: "#0078D4" },
   { name: "React", slug: "react", color: "#61DAFB" },
+  { name: "Next.js", slug: "nextdotjs", color: "#000000" },
   { name: "Node.js", slug: "nodedotjs", color: "#339933" },
+  { name: "Vercel", slug: "vercel", color: "#000000" },
   { name: "MySQL", slug: "mysql", color: "#4479A1" },
   { name: "WordPress", slug: "wordpress", color: "#21759B" },
 ] as const;

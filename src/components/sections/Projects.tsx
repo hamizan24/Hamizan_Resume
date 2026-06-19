@@ -78,7 +78,7 @@ export default function Projects() {
               )}
 
               {(project.github || project.demo) && (
-                <div className="mt-5 flex gap-4 border-t border-border pt-4 text-sm">
+                <div className="mt-5 flex gap-4 text-sm">
                   {project.github && (
                     <a
                       href={project.github}
@@ -86,7 +86,7 @@ export default function Projects() {
                       rel="noopener noreferrer"
                       className="font-medium text-accent hover:underline"
                     >
-                      GitHub
+                      View on GitHub
                     </a>
                   )}
                   {project.demo && (
