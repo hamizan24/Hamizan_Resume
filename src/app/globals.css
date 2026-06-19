@@ -3,21 +3,74 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #050810;
+  --foreground: #e8edf5;
+  --muted: #8b9cb3;
+  --accent: #00d4aa;
+  --accent-secondary: #3b82f6;
+  --accent-glow: rgba(0, 212, 170, 0.15);
+  --border: rgba(255, 255, 255, 0.08);
+  --glass: rgba(255, 255, 255, 0.04);
+  --glass-hover: rgba(255, 255, 255, 0.07);
+  --surface: rgba(15, 23, 42, 0.6);
+  --grid-line: rgba(0, 212, 170, 0.04);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(0, 212, 170, 0.25);
+  color: #fff;
+}
+
+@layer components {
+  .glass {
+    @apply border border-white/[0.08] bg-white/[0.04] backdrop-blur-xl;
+  }
+
+  .glass-hover {
+    @apply transition-all duration-300 hover:bg-white/[0.06];
+  }
+
+  .glass-hover:hover {
+    border-color: rgba(0, 212, 170, 0.3);
+  }
+
+  .gradient-text {
+    background: linear-gradient(to right, var(--accent), #6ee7b7, var(--accent-secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .section-padding {
+    @apply py-20 md:py-28;
+  }
+
+  .cyber-grid {
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .glow-accent {
+    box-shadow: 0 0 40px var(--accent-glow);
+  }
 }
 
 @layer utilities {
