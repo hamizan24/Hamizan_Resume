@@ -3,22 +3,23 @@ export const profile = {
   roles: [
     "IT Support Specialist",
     "Infrastructure Engineer",
-    "DevOps Transition",
+    "DevOps & Automation",
+    "Web Developer",
   ],
   location: "Bukit Jelutong, Shah Alam, Selangor",
   phone: "+60 14-266 5643",
   intro:
-    "Results-driven IT Support Specialist and Infrastructure Engineer with 3+ years of hands-on experience in network administration, server management, virtualization, and system security. Proven ability to maintain high system availability, manage IT infrastructure, and collaborate with cross-functional teams and vendors on technology upgrades.",
+    "Results-driven IT Support Specialist and Infrastructure Engineer with 3+ years of hands-on experience in network administration, server management, virtualization, and system security. Proven ability to maintain high system availability, manage IT infrastructure, and collaborate with cross-functional teams and vendors on technology upgrades. In parallel, I design and deploy personal web projects — including this portfolio — using React, Next.js, Tailwind CSS, and Vercel.",
   about:
-    "Actively transitioning into a DevOps role, with practical skills in Linux administration, VMware/Hyper-V virtualization, network configuration, and automation tooling. Also building modern web portfolios with React, Next.js, and AI-assisted development practices.",
+    "Results-driven IT professional with hands-on experience in network administration, server management, and virtualization. Pursuing DevOps practices through homelab projects and automation, while also building modern, responsive web applications with React, Next.js, and AI-assisted development workflows.",
   email: "hamizan.borhan2000@gmail.com",
   linkedin: "https://www.linkedin.com/in/muhammad-hamizan-borhan",
   github: "https://github.com/hamizan24",
   whatsapp: "https://wa.me/60142665643",
   resumeUrl: "/resume.pdf",
   footerTagline:
-    "Building reliable infrastructure, automating workflows, and creating modern digital solutions.",
-  tagline: "Bridging Infrastructure Operations with Modern DevOps",
+    "Building reliable infrastructure, automating workflows, and shipping modern web applications.",
+  tagline: "Bridging Infrastructure, DevOps & Modern Web Development",
 } as const;
 
 export const socialProof = [

@@ -12,7 +12,7 @@ export default function About() {
           <SectionHeading
             id="about-heading"
             label="About Me"
-            title="Infrastructure meets DevOps"
+            title="Infrastructure, DevOps & Web Development"
             subtitle={profile.about}
           />
         </Reveal>

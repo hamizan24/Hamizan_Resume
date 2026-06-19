@@ -56,7 +56,7 @@ export default function Hero() {
                   "Maintaining 99%+ server uptime...",
                   "Managing VMware & Hyper-V environments...",
                   "Building DevOps & CI/CD skills...",
-                  "Automating infrastructure workflows...",
+                  "Developing React & Next.js applications...",
                 ]}
               />
             </p>
