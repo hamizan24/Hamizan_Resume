@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import { profile } from "@/data/portfolio";
 
@@ -12,13 +15,17 @@ const sizeClasses = {
 };
 
 export default function ProfileAvatar({ size = "lg", className = "" }: ProfileAvatarProps) {
+  const [imageError, setImageError] = useState(false);
+
   const initials = profile.name
     .split(" ")
     .slice(0, 2)
     .map((part) => part[0])
     .join("");
 
-  if (profile.photoUrl) {
+  const showPhoto = profile.photoUrl && !imageError;
+
+  if (showPhoto && profile.photoUrl) {
     return (
       <div
         className={`relative shrink-0 overflow-hidden rounded-2xl ring-2 ring-accent/20 ring-offset-2 ring-offset-white shadow-md ${sizeClasses[size]} ${className}`}
@@ -30,6 +37,7 @@ export default function ProfileAvatar({ size = "lg", className = "" }: ProfileAv
           className="object-cover"
           priority
           sizes="(max-width: 640px) 96px, 112px"
+          onError={() => setImageError(true)}
         />
       </div>
     );
@@ -38,7 +46,7 @@ export default function ProfileAvatar({ size = "lg", className = "" }: ProfileAv
   return (
     <div
       className={`flex shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-accent to-accent-secondary font-bold text-white shadow-md ring-2 ring-accent/20 ring-offset-2 ring-offset-white ${sizeClasses[size]} ${className}`}
-      aria-hidden
+      aria-hidden={!profile.photoUrl || imageError ? true : undefined}
     >
       {initials}
     </div>

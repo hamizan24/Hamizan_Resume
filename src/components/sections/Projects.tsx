@@ -15,7 +15,7 @@ export default function Projects() {
           <SectionHeading
             id="projects-heading"
             label="Projects"
-            title="Personal & Homelab Projects"
+            title="Personal & homelab projects"
             subtitle="Self-initiated projects for learning and skill development — available to demonstrate upon request."
           />
         </Reveal>

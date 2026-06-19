@@ -10,11 +10,6 @@ export default function Footer() {
           <p className="mx-auto max-w-xl text-base leading-relaxed text-muted md:text-lg">
             &ldquo;{profile.footerTagline}&rdquo;
           </p>
-          <div className="mt-6 flex items-center justify-center gap-2">
-            <span className="h-px w-8 bg-accent/30" />
-            <span className="font-mono text-xs text-accent">MH</span>
-            <span className="h-px w-8 bg-accent/30" />
-          </div>
         </div>
 
         <div className="mt-8 flex flex-col items-center justify-center gap-2 text-sm text-muted sm:flex-row sm:justify-between">

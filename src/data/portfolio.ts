@@ -20,9 +20,8 @@ export const profile = {
   footerTagline:
     "Building reliable infrastructure, automating workflows, and shipping modern web applications.",
   tagline: "Bridging Infrastructure, DevOps & Modern Web Development",
-  heroSummary:
-    "IT professional with 3+ years in infrastructure and networking. Transitioning into DevOps while building modern web applications with React, Next.js, and AI-assisted workflows.",
-  photoUrl: null as string | null,
+  // Drop headshot at public/profile.jpg
+  photoUrl: "/profile.jpg" as string | null,
 } as const;
 
 export const socialProof = [
@@ -207,7 +206,6 @@ export const homelab = {
         },
       ],
       projects: [
-        "Online Portfolio & Resume Website",
         "React Full Stack Applications",
         "FSM Management System",
         "WordPress Business Websites",
@@ -293,26 +291,6 @@ export const projects = [
   {
     featured: true,
     personal: true,
-    name: "Online Portfolio & Resume Website",
-    subtitle: "Professional Portfolio — This Site",
-    description:
-      "Built with React and Next.js using an AI-assisted development workflow for faster delivery, code optimization, and enhanced productivity. Features responsive design, SEO optimization, and Vercel deployment.",
-    tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
-    features: [
-      "Responsive corporate UI",
-      "SEO & metadata optimized",
-      "Resume PDF download",
-      "AI-assisted dev workflow",
-    ],
-    github: "https://github.com/hamizan24/Hamizan_Resume",
-    demo: null,
-    image: null,
-    accent: "#1e40af",
-    icon: "code" as const,
-  },
-  {
-    featured: true,
-    personal: true,
     name: "FSM Pro",
     subtitle: "Field Service Management System",
     description:
@@ -326,7 +304,7 @@ export const projects = [
     ],
     github: null,
     demo: null,
-    image: null,
+    image: "/projects/fsm-pro.png",
     accent: "#2563eb",
     icon: "server" as const,
   },
@@ -341,7 +319,7 @@ export const projects = [
     features: [],
     github: null,
     demo: null,
-    image: null,
+    image: "/projects/homelab.png",
     accent: "#0d9488",
     icon: "homelab" as const,
   },
@@ -356,7 +334,7 @@ export const projects = [
     features: [],
     github: null,
     demo: null,
-    image: null,
+    image: "/projects/wordpress.png",
     accent: "#21759B",
     icon: "globe" as const,
   },

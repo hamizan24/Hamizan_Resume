@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 
 export type ProjectIcon = "code" | "server" | "globe" | "homelab";
@@ -40,21 +43,15 @@ function ProjectIconSvg({ icon }: { icon: ProjectIcon }) {
   );
 }
 
-export default function ProjectThumbnail({ name, image, accent, icon }: ProjectThumbnailProps) {
-  if (image) {
-    return (
-      <div className="relative aspect-video overflow-hidden">
-        <Image
-          src={image}
-          alt={name}
-          fill
-          className="object-cover transition-transform duration-300 group-hover:scale-105"
-          sizes="(max-width: 1024px) 100vw, 33vw"
-        />
-      </div>
-    );
-  }
-
+function PlaceholderThumbnail({
+  name,
+  accent,
+  icon,
+}: {
+  name: string;
+  accent: string;
+  icon: ProjectIcon;
+}) {
   return (
     <div
       className="relative flex aspect-video items-center justify-center overflow-hidden"
@@ -69,4 +66,25 @@ export default function ProjectThumbnail({ name, image, accent, icon }: ProjectT
       </p>
     </div>
   );
+}
+
+export default function ProjectThumbnail({ name, image, accent, icon }: ProjectThumbnailProps) {
+  const [imageError, setImageError] = useState(false);
+
+  if (image && !imageError) {
+    return (
+      <div className="relative aspect-video overflow-hidden">
+        <Image
+          src={image}
+          alt={name}
+          fill
+          className="object-cover transition-transform duration-300 group-hover:scale-105"
+          sizes="(max-width: 1024px) 100vw, 33vw"
+          onError={() => setImageError(true)}
+        />
+      </div>
+    );
+  }
+
+  return <PlaceholderThumbnail name={name} accent={accent} icon={icon} />;
 }

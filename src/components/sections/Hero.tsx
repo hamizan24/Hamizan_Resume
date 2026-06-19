@@ -9,8 +9,8 @@ import { scrollToSection } from "@/lib/hooks";
 
 export default function Hero() {
   const nameParts = profile.name.split(" ");
-  const highlight = nameParts.slice(0, 2).join(" ");
-  const rest = nameParts.slice(2).join(" ");
+  const givenName = nameParts.slice(0, 2).join(" ");
+  const patronymic = nameParts.slice(2).join(" ");
 
   return (
     <section className="relative flex min-h-[100dvh] items-center overflow-hidden bg-gradient-to-b from-white to-background pt-16 sm:pt-20">
@@ -19,42 +19,51 @@ export default function Hero() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(13,148,136,0.05),transparent_50%)]" />
 
       <div className="relative z-10 mx-auto w-full max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
-        <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-14">
+        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-white px-4 py-1.5 shadow-sm">
-              <span className="relative flex h-2 w-2">
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
-              </span>
-              <span className="text-xs font-medium text-muted">
-                Available for opportunities
-              </span>
+            <div className="mb-6 flex items-center gap-4">
+              <ProfileAvatar size="md" />
+              <div className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-4 py-1.5 shadow-sm">
+                <span className="relative flex h-2 w-2">
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+                </span>
+                <span className="text-xs font-medium text-muted">
+                  Available for opportunities
+                </span>
+              </div>
             </div>
 
-            <div className="flex items-center gap-4 sm:gap-5">
-              <ProfileAvatar />
-              <h1 className="min-w-0 text-[1.65rem] font-bold leading-tight tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-[3.25rem]">
-                <span className="gradient-text">{highlight}</span>
-                {rest && <span> {rest}</span>}
-              </h1>
-            </div>
+            <h1 className="text-balance text-[1.75rem] font-bold leading-[1.15] tracking-tight sm:text-4xl md:text-5xl lg:text-[3.25rem]">
+              <span className="block gradient-text">{givenName}</span>
+              {patronymic && (
+                <span className="mt-0.5 block whitespace-nowrap text-foreground sm:mt-1">
+                  {patronymic}
+                </span>
+              )}
+            </h1>
 
-            <p className="mt-4 max-w-xl text-base font-medium leading-relaxed text-accent sm:text-lg">
-              {profile.tagline}
-            </p>
-
-            <div className="mt-4 flex max-w-xl flex-wrap gap-2">
-              {profile.roles.map((role) => (
-                <span key={role} className="role-pill">
-                  {role}
+            <div className="mt-4 flex max-w-xl flex-wrap gap-x-2 gap-y-1.5 text-xs text-muted sm:gap-x-3 sm:gap-y-2 sm:text-sm md:text-base">
+              {profile.roles.map((role, i) => (
+                <span key={role} className="flex items-center gap-2 sm:gap-3">
+                  {i > 0 && (
+                    <span className="hidden text-border sm:inline" aria-hidden>
+                      |
+                    </span>
+                  )}
+                  <span>{role}</span>
                 </span>
               ))}
             </div>
 
-            <p className="mt-6 text-sm text-accent sm:text-base">
+            <p className="mt-4 max-w-xl text-base font-semibold leading-snug text-accent sm:mt-5 sm:text-lg md:text-xl">
+              {profile.tagline}
+            </p>
+
+            <p className="mt-5 text-sm text-accent sm:mt-6 sm:text-base">
               <TypingEffect
                 texts={[
                   "Maintaining 99%+ server uptime...",
@@ -65,8 +74,16 @@ export default function Hero() {
               />
             </p>
 
-            <p className="mt-5 max-w-xl text-sm leading-relaxed text-muted sm:text-base">
-              {profile.heroSummary}
+            <div className="mt-6 lg:hidden">
+              <TerminalCard />
+            </div>
+
+            <p className="mt-6 max-w-xl text-sm leading-relaxed text-muted sm:text-base">
+              {profile.intro}
+            </p>
+
+            <p className="mt-3 text-sm text-muted">
+              {profile.location} · {profile.phone}
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
@@ -96,10 +113,6 @@ export default function Hero() {
               </a>
             </div>
 
-            <div className="mt-10 lg:hidden">
-              <TerminalCard />
-            </div>
-
             <div className="mt-10 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-border pt-6">
               {socialProof.map((item, i) => (
                 <span key={item} className="flex items-center gap-4 text-xs text-muted sm:text-sm">
@@ -114,7 +127,7 @@ export default function Hero() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.12 }}
-            className="hidden lg:sticky lg:top-24 lg:block"
+            className="hidden lg:block"
           >
             <TerminalCard />
           </motion.div>
