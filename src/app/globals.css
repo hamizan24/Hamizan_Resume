@@ -21,7 +21,6 @@
 }
 
 html {
-  scroll-behavior: smooth;
   color-scheme: dark;
 }
 
@@ -39,11 +38,17 @@ body {
 
 @layer components {
   .glass {
-    @apply border border-white/[0.08] bg-white/[0.04] backdrop-blur-xl;
+    @apply border border-white/[0.08] bg-white/[0.04] backdrop-blur-md;
+  }
+
+  @media (min-width: 768px) {
+    .glass {
+      @apply backdrop-blur-xl;
+    }
   }
 
   .glass-hover {
-    @apply transition-all duration-300 hover:bg-white/[0.06];
+    @apply transition-colors duration-200 hover:bg-white/[0.06];
   }
 
   .glass-hover:hover {
@@ -58,7 +63,7 @@ body {
   }
 
   .section-padding {
-    @apply py-20 md:py-28;
+    @apply py-14 sm:py-20 md:py-28;
   }
 
   .cyber-grid {
@@ -76,5 +81,16 @@ body {
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

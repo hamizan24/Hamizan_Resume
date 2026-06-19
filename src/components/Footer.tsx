@@ -5,7 +5,7 @@ export default function Footer() {
 
   return (
     <footer className="border-t border-white/[0.06] py-12">
-      <div className="mx-auto max-w-6xl px-6">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="glass rounded-2xl p-8 text-center md:p-10">
           <p className="mx-auto max-w-xl text-base leading-relaxed text-muted md:text-lg">
             &ldquo;{profile.footerTagline}&rdquo;

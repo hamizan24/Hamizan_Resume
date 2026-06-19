@@ -10,7 +10,7 @@ import { fadeUp, defaultTransition, viewportOnce } from "@/lib/motion";
 export default function TechStackWall() {
   return (
     <section className="section-padding border-t border-white/[0.06]">
-      <div className="mx-auto max-w-6xl px-6">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <Reveal>
           <SectionHeading
             id="tech-stack-heading"
@@ -25,7 +25,7 @@ export default function TechStackWall() {
           whileInView="visible"
           viewport={viewportOnce}
           variants={{ visible: { transition: { staggerChildren: 0.05 } } }}
-          className="grid grid-cols-3 gap-6 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7"
+          className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 md:grid-cols-4 lg:grid-cols-7"
         >
           {techStack.map((tech) => (
             <motion.div key={tech.name} variants={fadeUp} transition={defaultTransition}>

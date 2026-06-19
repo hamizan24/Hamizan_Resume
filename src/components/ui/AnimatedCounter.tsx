@@ -45,13 +45,13 @@ export default function AnimatedCounter({ value, label, index }: AnimatedCounter
       initial={{ opacity: 0, y: 16 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.08 }}
-      className="glass glass-hover rounded-2xl p-6 text-center"
+      className="glass glass-hover rounded-xl p-4 text-center sm:rounded-2xl sm:p-6"
     >
-      <p className="text-3xl font-bold text-accent md:text-4xl">
+      <p className="text-2xl font-bold text-accent sm:text-3xl md:text-4xl">
         {isInView ? count : 0}
         {suffix}
       </p>
-      <p className="mt-2 text-sm text-muted">{label}</p>
+      <p className="mt-1.5 text-[11px] leading-snug text-muted sm:mt-2 sm:text-sm">{label}</p>
     </motion.div>
   );
 }

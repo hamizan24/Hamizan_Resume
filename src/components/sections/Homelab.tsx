@@ -1,110 +1,185 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { homelab } from "@/data/portfolio";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/ui/Reveal";
 import GlassCard from "@/components/ui/GlassCard";
-import { fadeUp, defaultTransition, viewportOnce } from "@/lib/motion";
+import { useReducedMotion } from "@/lib/hooks";
+
+type DiagramNode = {
+  id: string;
+  label: string;
+  x: number;
+  y: number;
+  color: string;
+};
 
 export default function Homelab() {
+  const [activeId, setActiveId] = useState<(typeof homelab.studyTracks)[number]["id"]>(
+    homelab.studyTracks[0].id,
+  );
+  const reducedMotion = useReducedMotion();
+  const activeTrack =
+    homelab.studyTracks.find((t) => t.id === activeId) ?? homelab.studyTracks[0];
+
   return (
-    <section id="homelab" className="section-padding scroll-mt-24 border-t border-white/[0.06]">
-      <div className="mx-auto max-w-6xl px-6">
+    <section id="homelab" className="section-padding scroll-mt-20 border-t border-white/[0.06] sm:scroll-mt-24">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <Reveal>
           <SectionHeading
             id="homelab-heading"
-            label="Homelab"
+            label="Homelab Study"
             title={homelab.title}
-            subtitle="Self-hosted environment for learning, testing, and building production-grade workflows."
+            subtitle={homelab.subtitle}
           />
         </Reveal>
 
-        <div className="grid gap-8 lg:grid-cols-5">
-          <Reveal className="lg:col-span-3">
-            <GlassCard className="p-6 md:p-8" hover={false}>
-              <p className="mb-6 font-mono text-xs uppercase tracking-wider text-accent">
-                Architecture Overview
-              </p>
-              <ArchitectureDiagram />
-            </GlassCard>
-          </Reveal>
+        <Reveal delay={0.05}>
+          <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            {homelab.studyTracks.map((track) => {
+              const isActive = track.id === activeId;
+              return (
+                <button
+                  key={track.id}
+                  type="button"
+                  onClick={() => setActiveId(track.id)}
+                  className={`relative rounded-xl px-4 py-3 text-left text-sm font-medium transition-all duration-300 sm:px-5 sm:py-3.5 sm:text-base ${
+                    isActive
+                      ? "glass text-foreground ring-1"
+                      : "border border-white/[0.06] bg-white/[0.02] text-muted hover:bg-white/[0.04] hover:text-foreground"
+                  }`}
+                  style={
+                    isActive
+                      ? {
+                          borderColor: `${track.accent}40`,
+                          boxShadow: `0 0 24px ${track.accent}15`,
+                        }
+                      : undefined
+                  }
+                >
+                  {isActive && (
+                    <motion.span
+                      layoutId="homelab-tab-indicator"
+                      className="absolute inset-x-0 bottom-0 h-0.5 rounded-full"
+                      style={{ backgroundColor: track.accent }}
+                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                    />
+                  )}
+                  {track.label}
+                </button>
+              );
+            })}
+          </div>
+        </Reveal>
 
-          <Reveal className="lg:col-span-2" delay={0.1}>
-            <div className="space-y-4">
-              {homelab.categories.map((cat) => (
-                <GlassCard key={cat.title} className="p-4">
-                  <h4 className="mb-2 text-sm font-semibold text-accent">{cat.title}</h4>
-                  <ul className="flex flex-wrap gap-2">
-                    {cat.items.map((item) => (
-                      <li
-                        key={item}
-                        className="rounded-md bg-white/[0.04] px-2 py-1 text-xs text-muted"
-                      >
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTrack.id}
+            initial={reducedMotion ? false : { opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={reducedMotion ? undefined : { opacity: 0, y: -8 }}
+            transition={{ duration: reducedMotion ? 0 : 0.35 }}
+          >
+            <p
+              className="mb-8 max-w-2xl text-sm leading-relaxed text-muted sm:text-base"
+              style={{ borderLeftColor: activeTrack.accent, borderLeftWidth: 3, paddingLeft: 12 }}
+            >
+              {activeTrack.description}
+            </p>
+
+            <div className="grid gap-6 lg:grid-cols-5 lg:gap-8">
+              <div className="lg:col-span-3">
+                <GlassCard className="p-4 sm:p-6 md:p-8" hover={false}>
+                  <p className="mb-4 font-mono text-xs uppercase tracking-wider text-accent sm:mb-6">
+                    Architecture Overview
+                  </p>
+                  <ArchitectureDiagram
+                    nodes={[...activeTrack.nodes]}
+                    connections={activeTrack.connections.map(([a, b]) => [a, b])}
+                    accent={activeTrack.accent}
+                  />
                 </GlassCard>
+              </div>
+
+              <div className="space-y-3 sm:space-y-4 lg:col-span-2">
+                {activeTrack.categories.map((cat, i) => (
+                  <motion.div
+                    key={cat.title}
+                    initial={reducedMotion ? false : { opacity: 0, x: 12 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: reducedMotion ? 0 : i * 0.06, duration: 0.35 }}
+                  >
+                    <GlassCard className="p-3 sm:p-4">
+                      <h4
+                        className="mb-2 text-sm font-semibold"
+                        style={{ color: activeTrack.accent }}
+                      >
+                        {cat.title}
+                      </h4>
+                      <ul className="flex flex-wrap gap-1.5 sm:gap-2">
+                        {cat.items.map((item) => (
+                          <li
+                            key={item}
+                            className="rounded-md bg-white/[0.04] px-2 py-1 text-xs text-muted"
+                          >
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </GlassCard>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-6 grid gap-2 sm:mt-8 sm:grid-cols-2 sm:gap-3 lg:grid-cols-3">
+              {activeTrack.projects.map((project, i) => (
+                <div
+                  key={project}
+                  className="glass glass-hover flex items-center gap-3 rounded-xl p-3 sm:p-4"
+                  style={{
+                    animationDelay: reducedMotion ? undefined : `${i * 50}ms`,
+                  }}
+                >
+                  <span
+                    className="flex h-2 w-2 shrink-0 rounded-full"
+                    style={{ backgroundColor: activeTrack.accent }}
+                  />
+                  <span className="text-xs text-muted sm:text-sm">{project}</span>
+                </div>
               ))}
             </div>
-          </Reveal>
-        </div>
-
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
-          variants={{ visible: { transition: { staggerChildren: 0.06 } } }}
-          className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3"
-        >
-          {homelab.projects.map((project) => (
-            <motion.div
-              key={project}
-              variants={fadeUp}
-              transition={defaultTransition}
-              className="glass glass-hover flex items-center gap-3 rounded-xl p-4"
-            >
-              <span className="flex h-2 w-2 shrink-0 rounded-full bg-accent" />
-              <span className="text-sm text-muted">{project}</span>
-            </motion.div>
-          ))}
-        </motion.div>
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   );
 }
 
-function ArchitectureDiagram() {
-  const nodes = [
-    { id: "esxi", label: "VMware ESXi", x: 50, y: 12, color: "#607078" },
-    { id: "hyperv", label: "Hyper-V", x: 85, y: 12, color: "#0078D4" },
-    { id: "docker", label: "Docker", x: 15, y: 45, color: "#2496ED" },
-    { id: "jenkins", label: "Jenkins", x: 50, y: 45, color: "#D24939" },
-    { id: "gitlab", label: "GitLab CI", x: 85, y: 45, color: "#FC6D26" },
-    { id: "grafana", label: "Grafana", x: 25, y: 78, color: "#F46800" },
-    { id: "prom", label: "Prometheus", x: 60, y: 78, color: "#E6522C" },
-    { id: "github", label: "GitHub", x: 90, y: 78, color: "#ffffff" },
-  ];
-
-  const connections = [
-    ["esxi", "docker"],
-    ["hyperv", "docker"],
-    ["docker", "jenkins"],
-    ["jenkins", "gitlab"],
-    ["docker", "grafana"],
-    ["grafana", "prom"],
-    ["jenkins", "github"],
-  ];
-
+function ArchitectureDiagram({
+  nodes,
+  connections,
+  accent,
+}: {
+  nodes: DiagramNode[];
+  connections: string[][];
+  accent: string;
+}) {
   const nodeMap = Object.fromEntries(nodes.map((n) => [n.id, n]));
 
   return (
-    <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-white/[0.02] ring-1 ring-white/[0.06]">
-      <svg viewBox="0 0 100 90" className="h-full w-full" aria-hidden>
+    <div className="relative min-h-[200px] w-full overflow-x-auto overflow-y-hidden rounded-xl bg-white/[0.02] ring-1 ring-white/[0.06] sm:min-h-0 sm:aspect-[16/10]">
+      <svg
+        viewBox="0 0 100 90"
+        className="h-full min-w-[280px] w-full sm:min-w-0"
+        aria-hidden
+      >
         {connections.map(([from, to]) => {
           const a = nodeMap[from];
           const b = nodeMap[to];
+          if (!a || !b) return null;
           return (
             <line
               key={`${from}-${to}`}
@@ -112,7 +187,8 @@ function ArchitectureDiagram() {
               y1={a.y + 4}
               x2={b.x}
               y2={b.y + 4}
-              stroke="rgba(0,212,170,0.2)"
+              stroke={accent}
+              strokeOpacity="0.25"
               strokeWidth="0.3"
               strokeDasharray="1 1"
             />

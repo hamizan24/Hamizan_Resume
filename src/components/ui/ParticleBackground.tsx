@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useReducedMotion } from "@/lib/hooks";
 
 type Particle = {
   x: number;
@@ -13,24 +14,34 @@ type Particle = {
 
 export default function ParticleBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const reducedMotion = useReducedMotion();
 
   useEffect(() => {
+    if (reducedMotion) return;
+
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    const container = containerRef.current;
+    if (!canvas || !container) return;
 
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    let animationId: number;
+    let animationId = 0;
     let particles: Particle[] = [];
     let width = 0;
     let height = 0;
+    let isVisible = true;
+    let isRunning = false;
 
-    const count = 50;
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    const count = isMobile ? 18 : 32;
+    const linkDistance = isMobile ? 80 : 100;
 
     const resize = () => {
-      width = window.innerWidth;
-      height = window.innerHeight;
+      const rect = container.getBoundingClientRect();
+      width = rect.width;
+      height = rect.height;
       canvas.width = width;
       canvas.height = height;
     };
@@ -39,17 +50,23 @@ export default function ParticleBackground() {
       particles = Array.from({ length: count }, () => ({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3,
-        size: Math.random() * 1.5 + 0.5,
-        opacity: Math.random() * 0.4 + 0.1,
+        vx: (Math.random() - 0.5) * 0.25,
+        vy: (Math.random() - 0.5) * 0.25,
+        size: Math.random() * 1.2 + 0.5,
+        opacity: Math.random() * 0.35 + 0.1,
       }));
     };
 
     const draw = () => {
+      if (!isVisible) {
+        isRunning = false;
+        return;
+      }
+
       ctx.clearRect(0, 0, width, height);
 
-      particles.forEach((p, i) => {
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
         p.x += p.vx;
         p.y += p.vy;
 
@@ -65,42 +82,68 @@ export default function ParticleBackground() {
           const p2 = particles[j];
           const dx = p.x - p2.x;
           const dy = p.y - p2.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
+          const distSq = dx * dx + dy * dy;
+          const maxDistSq = linkDistance * linkDistance;
 
-          if (dist < 120) {
+          if (distSq < maxDistSq) {
+            const dist = Math.sqrt(distSq);
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(0, 212, 170, ${0.06 * (1 - dist / 120)})`;
+            ctx.strokeStyle = `rgba(0, 212, 170, ${0.05 * (1 - dist / linkDistance)})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
         }
-      });
+      }
 
       animationId = requestAnimationFrame(draw);
     };
 
-    resize();
-    init();
-    draw();
+    const start = () => {
+      if (isRunning || !isVisible) return;
+      isRunning = true;
+      draw();
+    };
 
-    window.addEventListener("resize", () => {
+    const stop = () => {
+      isRunning = false;
+      cancelAnimationFrame(animationId);
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+        if (isVisible) start();
+        else stop();
+      },
+      { threshold: 0.05 },
+    );
+
+    const onResize = () => {
       resize();
       init();
-    });
+    };
+
+    resize();
+    init();
+    observer.observe(container);
+    window.addEventListener("resize", onResize, { passive: true });
+
+    if (isVisible) start();
 
     return () => {
-      cancelAnimationFrame(animationId);
-      window.removeEventListener("resize", resize);
+      stop();
+      observer.disconnect();
+      window.removeEventListener("resize", onResize);
     };
-  }, []);
+  }, [reducedMotion]);
+
+  if (reducedMotion) return null;
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="pointer-events-none fixed inset-0 z-0 opacity-60"
-      aria-hidden
-    />
+    <div ref={containerRef} className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+      <canvas ref={canvasRef} className="h-full w-full opacity-50" aria-hidden />
+    </div>
   );
 }

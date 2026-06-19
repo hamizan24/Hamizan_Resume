@@ -5,8 +5,8 @@ import AnimatedCounter from "@/components/ui/AnimatedCounter";
 
 export default function About() {
   return (
-    <section id="about" className="section-padding scroll-mt-24">
-      <div className="mx-auto max-w-6xl px-6">
+    <section id="about" className="section-padding scroll-mt-20 sm:scroll-mt-24">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <Reveal>
           <SectionHeading
             id="about-heading"
@@ -16,7 +16,7 @@ export default function About() {
           />
         </Reveal>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-5">
           {stats.map((stat, i) => (
             <AnimatedCounter
               key={stat.label}

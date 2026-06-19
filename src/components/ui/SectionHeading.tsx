@@ -12,13 +12,13 @@ export default function SectionHeading({
   subtitle,
 }: SectionHeadingProps) {
   return (
-    <div className="mb-12 md:mb-16">
-      <p className="mb-2 font-mono text-xs uppercase tracking-[0.2em] text-accent">
+    <div className="mb-10 sm:mb-12 md:mb-16">
+      <p className="mb-2 font-mono text-xs uppercase tracking-[0.15em] text-accent sm:tracking-[0.2em]">
         {label}
       </p>
       <h2
         id={id}
-        className="text-3xl font-bold tracking-tight text-foreground md:text-4xl"
+        className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl md:text-4xl"
       >
         {title}
       </h2>

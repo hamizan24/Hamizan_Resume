@@ -7,14 +7,14 @@ import ParticleBackground from "@/components/ui/ParticleBackground";
 
 export default function Hero() {
   return (
-    <section className="relative flex min-h-screen items-center overflow-hidden pt-20">
+    <section className="relative flex min-h-[100dvh] items-center overflow-hidden pt-16 sm:pt-20">
       <ParticleBackground />
 
       <div className="cyber-grid pointer-events-none absolute inset-0 z-0" />
-      <div className="pointer-events-none absolute -left-32 top-1/4 h-96 w-96 rounded-full bg-accent/5 blur-3xl" />
-      <div className="pointer-events-none absolute -right-32 bottom-1/4 h-96 w-96 rounded-full bg-accent-secondary/5 blur-3xl" />
+      <div className="pointer-events-none absolute -left-32 top-1/4 hidden h-96 w-96 rounded-full bg-accent/5 blur-3xl md:block" />
+      <div className="pointer-events-none absolute -right-32 bottom-1/4 hidden h-96 w-96 rounded-full bg-accent-secondary/5 blur-3xl md:block" />
 
-      <div className="relative z-10 mx-auto w-full max-w-6xl px-6 py-20">
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -30,7 +30,7 @@ export default function Hero() {
             </span>
           </div>
 
-          <h1 className="max-w-4xl text-4xl font-bold leading-tight tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+          <h1 className="max-w-4xl text-[1.65rem] font-bold leading-tight tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-6xl">
             {profile.name}
           </h1>
 
@@ -58,24 +58,32 @@ export default function Hero() {
             {profile.intro}
           </p>
 
-          <div className="mt-10 flex flex-wrap gap-4">
+          <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-4">
             <a
               href={profile.resumeUrl}
               download
-              className="inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-background transition-all hover:brightness-110 glow-accent"
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-5 py-2.5 text-sm font-semibold text-background transition-all hover:brightness-110 glow-accent sm:px-6 sm:py-3"
             >
               <DownloadIcon />
               Download Resume
             </a>
             <a
               href="#contact"
-              className="glass glass-hover inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold text-foreground"
+              onClick={(e) => {
+                e.preventDefault();
+                document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="glass glass-hover inline-flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold text-foreground sm:px-6 sm:py-3"
             >
               Contact Me
             </a>
             <a
               href="#projects"
-              className="glass glass-hover inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold text-foreground"
+              onClick={(e) => {
+                e.preventDefault();
+                document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="glass glass-hover inline-flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold text-foreground sm:px-6 sm:py-3"
             >
               View Projects
             </a>

@@ -43,7 +43,7 @@ const icons: Record<string, ReactNode> = {
 export default function Skills() {
   return (
     <section id="skills" className="section-padding scroll-mt-24 border-t border-white/[0.06]">
-      <div className="mx-auto max-w-6xl px-6">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <Reveal>
           <SectionHeading
             id="skills-heading"
