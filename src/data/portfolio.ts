@@ -20,6 +20,8 @@ export const profile = {
   footerTagline:
     "Building reliable infrastructure, automating workflows, and shipping modern web applications.",
   tagline: "Bridging Infrastructure, DevOps & Modern Web Development",
+  heroSummary:
+    "IT professional with 3+ years in infrastructure and networking. Transitioning into DevOps while building modern web applications with React, Next.js, and AI-assisted workflows.",
   photoUrl: null as string | null,
 } as const;
 

@@ -5,6 +5,8 @@ import AnimatedCounter from "@/components/ui/AnimatedCounter";
 import GlassCard from "@/components/ui/GlassCard";
 
 export default function About() {
+  const primaryStats = stats.slice(0, 4);
+
   return (
     <section id="about" className="section-padding scroll-mt-20 sm:scroll-mt-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -13,12 +15,12 @@ export default function About() {
             id="about-heading"
             label="About Me"
             title="Infrastructure, DevOps & Web Development"
-            subtitle={profile.about}
+            subtitle="Background, metrics, and education."
           />
         </Reveal>
 
-        <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4 md:grid-rows-3">
-          <Reveal className="col-span-2 row-span-2 md:col-span-2 md:row-span-2">
+        <div className="grid gap-3 sm:gap-4 md:grid-cols-2">
+          <Reveal className="md:row-span-2">
             <GlassCard className="flex h-full min-h-[220px] flex-col p-5 sm:min-h-0 sm:p-7" hover={false}>
               <p className="font-mono text-xs uppercase tracking-wider text-accent">
                 Professional Summary
@@ -27,24 +29,22 @@ export default function About() {
                 {profile.intro}
               </p>
               <p className="mt-4 border-t border-border pt-4 text-sm text-muted">
-                {profile.location}
+                {profile.email} · {profile.location}
               </p>
             </GlassCard>
           </Reveal>
 
-          {stats.map((stat, i) => (
-            <Reveal
-              key={stat.label}
-              delay={0.05 + i * 0.04}
-              className={i === 4 ? "col-span-2 md:col-span-2 md:col-start-3" : ""}
-            >
-              <AnimatedCounter
-                value={stat.value}
-                label={stat.label}
-                index={i}
-              />
-            </Reveal>
-          ))}
+          <div className="grid grid-cols-2 gap-3 sm:gap-4">
+            {primaryStats.map((stat, i) => (
+              <Reveal key={stat.label} delay={0.05 + i * 0.04}>
+                <AnimatedCounter
+                  value={stat.value}
+                  label={stat.label}
+                  index={i}
+                />
+              </Reveal>
+            ))}
+          </div>
         </div>
 
         <Reveal delay={0.15}>

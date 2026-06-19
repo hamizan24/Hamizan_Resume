@@ -9,7 +9,6 @@ const lines = [
   { prompt: "Experience", output: "3+ years IT & infrastructure" },
   { prompt: "Uptime", output: "99%+ server availability" },
   { prompt: "Focus", output: "DevOps, automation & web development" },
-  { prompt: "Location", output: "Shah Alam, Selangor" },
 ];
 
 export default function TerminalCard() {
@@ -47,7 +46,7 @@ export default function TerminalCard() {
         {lines.slice(0, visibleLines).map((line) => (
           <div key={line.prompt} className="flex items-start justify-between gap-4 border-b border-slate-100 pb-3 last:border-0 last:pb-0">
             <span className="text-xs font-medium text-muted">{line.prompt}</span>
-            <span className="text-right text-xs font-medium text-foreground">{line.output}</span>
+            <span className="text-right text-xs font-semibold text-foreground">{line.output}</span>
           </div>
         ))}
       </div>
