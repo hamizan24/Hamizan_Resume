@@ -29,7 +29,7 @@ export default function TechStackWall() {
         >
           {techStack.map((tech) => (
             <motion.div key={tech.name} variants={fadeUp} transition={defaultTransition}>
-              <TechLogo name={tech.name} slug={tech.slug} />
+              <TechLogo name={tech.name} slug={tech.slug} color={tech.color} />
             </motion.div>
           ))}
         </motion.div>
