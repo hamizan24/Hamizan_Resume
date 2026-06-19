@@ -19,8 +19,8 @@ export default function Footer() {
 
         <div className="mt-8 flex flex-col items-center justify-between gap-4 text-sm text-muted sm:flex-row">
           <p>© {year} {profile.name}</p>
-          <p className="font-mono text-xs">
-            Next.js · Tailwind CSS · Framer Motion
+          <p className="max-w-md text-center text-xs leading-relaxed sm:text-right">
+            {profile.siteBuiltWith}
           </p>
         </div>
       </div>

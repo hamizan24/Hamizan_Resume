@@ -19,6 +19,8 @@ export const profile = {
   footerTagline:
     "Building reliable infrastructure, automating workflows, and creating modern digital solutions.",
   tagline: "Bridging Infrastructure Operations with Modern DevOps",
+  siteBuiltWith:
+    "Built with React & Next.js using an AI-assisted development workflow for faster delivery, code optimization, and enhanced productivity.",
 } as const;
 
 export const socialProof = [
@@ -100,6 +102,8 @@ export const skillCategories = [
       { name: "HTML & CSS", level: 70 },
       { name: "JavaScript", level: 58 },
       { name: "React.js", level: 55 },
+      { name: "Next.js", level: 58 },
+      { name: "TypeScript", level: 52 },
       { name: "Node.js", level: 52 },
       { name: "Express.js", level: 50 },
       { name: "REST API", level: 52 },
@@ -284,6 +288,23 @@ export const projects = [
   {
     featured: true,
     personal: true,
+    name: "Online Portfolio Website",
+    subtitle: "Personal Resume & Portfolio",
+    description:
+      "Designed and developed this responsive portfolio using React and Next.js. Applied an AI-assisted development workflow to accelerate delivery, optimize code quality, and improve development productivity. Deployed via GitHub and Vercel with SEO optimization.",
+    tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
+    features: [
+      "Responsive Corporate UI",
+      "SEO & Performance Optimized",
+      "GitHub + Vercel Deployment",
+      "AI-Assisted Development Workflow",
+    ],
+    github: "https://github.com/hamizan24/Hamizan_Resume",
+    demo: null,
+  },
+  {
+    featured: true,
+    personal: true,
     name: "FSM Pro",
     subtitle: "Field Service Management System",
     description:
@@ -350,7 +371,7 @@ export const devopsReadiness = [
   {
     title: "Web Development",
     year: "Personal Projects",
-    items: ["HTML & CSS", "React.js", "Node.js & Express", "REST API"],
+    items: ["React.js", "Next.js", "AI-Assisted Workflow", "REST API"],
   },
 ] as const;
 

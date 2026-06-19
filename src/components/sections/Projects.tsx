@@ -76,6 +76,31 @@ export default function Projects() {
                   ))}
                 </ul>
               )}
+
+              {(project.github || project.demo) && (
+                <div className="mt-5 flex gap-4 border-t border-border pt-4 text-sm">
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-medium text-accent hover:underline"
+                    >
+                      GitHub
+                    </a>
+                  )}
+                  {project.demo && (
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-medium text-accent hover:underline"
+                    >
+                      Live demo
+                    </a>
+                  )}
+                </div>
+              )}
             </motion.article>
           ))}
         </motion.div>
