@@ -12,24 +12,28 @@ const contacts = [
     value: profile.email,
     href: `mailto:${profile.email}`,
     icon: "email",
+    ariaLabel: `Email ${profile.name}`,
   },
   {
     label: "LinkedIn",
     value: "Connect on LinkedIn",
     href: profile.linkedin,
     icon: "linkedin",
+    ariaLabel: `Connect with ${profile.name} on LinkedIn`,
   },
   {
     label: "GitHub",
     value: "View repositories",
     href: profile.github,
     icon: "github",
+    ariaLabel: `View ${profile.name}'s GitHub repositories`,
   },
   {
     label: "WhatsApp",
     value: profile.phone,
     href: profile.whatsapp,
     icon: "whatsapp",
+    ariaLabel: `Message ${profile.name} on WhatsApp`,
   },
 ];
 
@@ -46,6 +50,17 @@ export default function Contact() {
           />
         </Reveal>
 
+        <Reveal delay={0.05}>
+          <a
+            href={`mailto:${profile.email}`}
+            aria-label={`Send an email to ${profile.name}`}
+            className="btn-primary mb-6 flex w-full items-center justify-center gap-2 py-3.5 text-base sm:mb-8"
+          >
+            <EmailIcon />
+            Send an email
+          </a>
+        </Reveal>
+
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -57,6 +72,7 @@ export default function Contact() {
             <motion.a
               key={contact.label}
               href={contact.href}
+              aria-label={contact.ariaLabel}
               target={contact.icon !== "email" ? "_blank" : undefined}
               rel={contact.icon !== "email" ? "noopener noreferrer" : undefined}
               variants={fadeUp}
@@ -75,6 +91,14 @@ export default function Contact() {
         </motion.div>
       </div>
     </section>
+  );
+}
+
+function EmailIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+      <rect x="2" y="4" width="20" height="16" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+    </svg>
   );
 }
 

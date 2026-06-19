@@ -8,7 +8,7 @@ const lines = [
   { prompt: "Status", output: "Open to opportunities" },
   { prompt: "Experience", output: "3+ years IT & infrastructure" },
   { prompt: "Uptime", output: "99%+ server availability" },
-  { prompt: "Focus", output: "DevOps & automation transition" },
+  { prompt: "Focus", output: "DevOps, automation & web development" },
   { prompt: "Location", output: "Shah Alam, Selangor" },
 ];
 

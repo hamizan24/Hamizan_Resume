@@ -20,6 +20,7 @@ export const profile = {
   footerTagline:
     "Building reliable infrastructure, automating workflows, and shipping modern web applications.",
   tagline: "Bridging Infrastructure, DevOps & Modern Web Development",
+  photoUrl: null as string | null,
 } as const;
 
 export const socialProof = [
@@ -258,6 +259,7 @@ export const experience = [
     location: "Bukit Jelutong",
     role: "IT Technical Support Engineer",
     period: "Nov 2023 — Present",
+    accent: "#1e40af",
     achievements: [
       "Delivered Tier-1 and Tier-2 IT support across all departments within defined SLAs",
       "Administered Windows/Linux servers with 99%+ uptime through proactive maintenance and patching",
@@ -273,6 +275,7 @@ export const experience = [
     location: "UITM Puncak Alam (Deployed)",
     role: "IT Technician",
     period: "Jan 2022 — Oct 2023",
+    accent: "#0d9488",
     achievements: [
       "Maintained campus network infrastructure with minimal downtime across multi-building facilities",
       "Executed PPM schedule for barrier gates, CCTV, and access control systems",
@@ -301,6 +304,9 @@ export const projects = [
     ],
     github: "https://github.com/hamizan24/Hamizan_Resume",
     demo: null,
+    image: null,
+    accent: "#1e40af",
+    icon: "code" as const,
   },
   {
     featured: true,
@@ -318,6 +324,9 @@ export const projects = [
     ],
     github: null,
     demo: null,
+    image: null,
+    accent: "#2563eb",
+    icon: "server" as const,
   },
   {
     featured: true,
@@ -330,6 +339,9 @@ export const projects = [
     features: [],
     github: null,
     demo: null,
+    image: null,
+    accent: "#0d9488",
+    icon: "homelab" as const,
   },
   {
     featured: true,
@@ -342,6 +354,9 @@ export const projects = [
     features: [],
     github: null,
     demo: null,
+    image: null,
+    accent: "#21759B",
+    icon: "globe" as const,
   },
 ] as const;
 
@@ -401,10 +416,10 @@ export const techStack = [
 export const navLinks = [
   { href: "#about", label: "About" },
   { href: "#skills", label: "Skills" },
-  { href: "#homelab", label: "Homelab Study" },
+  { href: "#homelab", label: "Homelab" },
   { href: "#experience", label: "Experience" },
   { href: "#projects", label: "Projects" },
-  { href: "#certifications", label: "Education" },
+  { href: "#certifications", label: "Learning" },
   { href: "#contact", label: "Contact" },
 ] as const;
 

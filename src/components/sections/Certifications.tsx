@@ -1,10 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { devopsReadiness, careerGoals, education } from "@/data/portfolio";
+import { devopsReadiness, careerGoals } from "@/data/portfolio";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/ui/Reveal";
-import GlassCard from "@/components/ui/GlassCard";
 import { fadeUp, defaultTransition, viewportOnce } from "@/lib/motion";
 
 export default function Certifications() {
@@ -18,18 +17,6 @@ export default function Certifications() {
             title="Learning path & career goals"
             subtitle="Formal network technology education plus active self-development toward DevOps and automation."
           />
-        </Reveal>
-
-        <Reveal delay={0.05}>
-          <div className="mb-10 grid gap-4 sm:grid-cols-2 lg:hidden">
-            {education.map((edu) => (
-              <GlassCard key={edu.degree} className="p-4">
-                <h3 className="text-sm font-semibold text-foreground">{edu.degree}</h3>
-                <p className="mt-1 text-xs text-accent">{edu.school}</p>
-                <p className="mt-1 font-mono text-xs text-muted">{edu.period}</p>
-              </GlassCard>
-            ))}
-          </div>
         </Reveal>
 
         <Reveal delay={0.1}>

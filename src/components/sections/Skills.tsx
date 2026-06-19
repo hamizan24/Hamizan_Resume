@@ -1,12 +1,37 @@
 "use client";
 
-import { type ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { motion } from "framer-motion";
-import { skillCategories } from "@/data/portfolio";
+import { skillCategories, techStack } from "@/data/portfolio";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Reveal from "@/components/ui/Reveal";
 import SkillLevelBar from "@/components/ui/SkillLevelBar";
+import TechLogo from "@/components/ui/TechLogo";
 import { staggerContainer, fadeUp, defaultTransition, viewportOnce } from "@/lib/motion";
+
+const skillTabs = [
+  {
+    id: "infrastructure",
+    label: "Infrastructure",
+    categories: [
+      "Infrastructure & Systems",
+      "Networking & Security",
+      "Tools & Platforms",
+    ],
+  },
+  {
+    id: "devops",
+    label: "DevOps",
+    categories: ["DevOps & Automation"],
+  },
+  {
+    id: "development",
+    label: "Development",
+    categories: ["Development", "Database"],
+  },
+] as const;
+
+type SkillTabId = (typeof skillTabs)[number]["id"];
 
 const icons: Record<string, ReactNode> = {
   server: (
@@ -42,6 +67,12 @@ const icons: Record<string, ReactNode> = {
 };
 
 export default function Skills() {
+  const [activeTab, setActiveTab] = useState<SkillTabId>("infrastructure");
+  const activeTabData = skillTabs.find((tab) => tab.id === activeTab) ?? skillTabs[0];
+  const visibleCategories = skillCategories.filter((category) =>
+    (activeTabData.categories as readonly string[]).includes(category.title),
+  );
+
   return (
     <section id="skills" className="section-padding section-divider scroll-mt-20 sm:scroll-mt-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -54,14 +85,54 @@ export default function Skills() {
           />
         </Reveal>
 
+        <Reveal delay={0.05}>
+          <div
+            role="tablist"
+            aria-label="Skill categories"
+            className="mb-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap"
+          >
+            {skillTabs.map((tab) => {
+              const isActive = tab.id === activeTab;
+              return (
+                <button
+                  key={tab.id}
+                  type="button"
+                  role="tab"
+                  id={`skills-tab-${tab.id}`}
+                  aria-selected={isActive}
+                  aria-controls={`skills-panel-${tab.id}`}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`relative rounded-xl px-4 py-3 text-left text-sm font-medium transition-all duration-300 sm:px-5 sm:py-3.5 sm:text-base ${
+                    isActive
+                      ? "glass text-foreground shadow-md ring-1 ring-accent/20"
+                      : "border border-border bg-slate-50 text-muted hover:border-accent/20 hover:bg-white hover:text-foreground"
+                  }`}
+                >
+                  {isActive && (
+                    <motion.span
+                      layoutId="skills-tab-indicator"
+                      className="absolute inset-x-0 bottom-0 h-0.5 rounded-full bg-accent"
+                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                    />
+                  )}
+                  {tab.label}
+                </button>
+              );
+            })}
+          </div>
+        </Reveal>
+
         <motion.div
+          key={activeTab}
+          role="tabpanel"
+          id={`skills-panel-${activeTab}`}
+          aria-labelledby={`skills-tab-${activeTab}`}
           variants={staggerContainer}
           initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
+          animate="visible"
           className="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3"
         >
-          {skillCategories.map((category) => (
+          {visibleCategories.map((category) => (
             <motion.div
               key={category.title}
               variants={fadeUp}
@@ -87,6 +158,27 @@ export default function Skills() {
             </motion.div>
           ))}
         </motion.div>
+
+        <Reveal delay={0.1}>
+          <div className="mt-14 sm:mt-16">
+            <p className="mb-6 font-mono text-xs uppercase tracking-wider text-muted">
+              Tools & Technologies
+            </p>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={viewportOnce}
+              variants={{ visible: { transition: { staggerChildren: 0.05 } } }}
+              className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 md:grid-cols-4 lg:grid-cols-7"
+            >
+              {techStack.map((tech) => (
+                <motion.div key={tech.name} variants={fadeUp} transition={defaultTransition}>
+                  <TechLogo name={tech.name} slug={tech.slug} color={tech.color} />
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

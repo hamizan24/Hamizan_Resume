@@ -59,6 +59,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} bg-background font-sans text-foreground antialiased`}
       >
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
         <JsonLd />
         {children}
       </body>

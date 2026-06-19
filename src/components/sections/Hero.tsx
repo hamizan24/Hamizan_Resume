@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { profile, socialProof } from "@/data/portfolio";
 import TypingEffect from "@/components/ui/TypingEffect";
 import TerminalCard from "@/components/ui/TerminalCard";
+import ProfileAvatar from "@/components/ui/ProfileAvatar";
 import { scrollToSection } from "@/lib/hooks";
 
 export default function Hero() {
@@ -13,6 +14,7 @@ export default function Hero() {
 
   return (
     <section className="relative flex min-h-[100dvh] items-center overflow-hidden bg-gradient-to-b from-white to-background pt-16 sm:pt-20">
+      <div className="pointer-events-none absolute inset-0 hero-grid-pattern opacity-60" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(37,99,235,0.06),transparent_50%)]" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(13,148,136,0.05),transparent_50%)]" />
 
@@ -22,35 +24,48 @@ export default function Hero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
+            className="flex flex-col"
           >
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-white px-4 py-1.5 shadow-sm">
-              <span className="relative flex h-2 w-2">
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
-              </span>
-              <span className="text-xs font-medium text-muted">
-                Available for opportunities
-              </span>
+            <div className="mb-6 flex items-start gap-4 sm:items-center lg:mb-6">
+              <ProfileAvatar className="lg:hidden" />
+              <div className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-4 py-1.5 shadow-sm">
+                <span className="relative flex h-2 w-2">
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+                </span>
+                <span className="text-xs font-medium text-muted">
+                  Available for opportunities
+                </span>
+              </div>
             </div>
 
             <p className="gradient-text text-lg font-semibold sm:text-xl md:text-2xl">
               {profile.tagline}
             </p>
 
-            <h1 className="mt-4 max-w-4xl text-[1.65rem] font-bold leading-tight tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-[3.25rem]">
-              <span className="gradient-text">{highlight}</span>
-              {rest && <span> {rest}</span>}
-            </h1>
+            <div className="mt-4 flex items-start gap-5">
+              <ProfileAvatar className="hidden lg:flex" />
+              <div className="min-w-0 flex-1">
+                <h1 className="max-w-4xl text-[1.65rem] font-bold leading-tight tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-[3.25rem]">
+                  <span className="gradient-text">{highlight}</span>
+                  {rest && <span> {rest}</span>}
+                </h1>
 
-            <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-muted sm:text-base">
-              {profile.roles.map((role, i) => (
-                <span key={role} className="flex items-center gap-3">
-                  {i > 0 && <span className="hidden text-border sm:inline">|</span>}
-                  <span>{role}</span>
-                </span>
-              ))}
+                <div className="mt-4 flex max-w-xl flex-wrap gap-x-2 gap-y-1.5 text-xs text-muted sm:gap-x-3 sm:gap-y-2 sm:text-sm md:text-base">
+                  {profile.roles.map((role, i) => (
+                    <span key={role} className="flex items-center gap-2 sm:gap-3">
+                      {i > 0 && (
+                        <span className="hidden text-border sm:inline" aria-hidden>
+                          |
+                        </span>
+                      )}
+                      <span>{role}</span>
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
 
-            <p className="mt-6 text-sm text-accent sm:text-base">
+            <p className="order-3 mt-6 text-sm text-accent sm:text-base">
               <TypingEffect
                 texts={[
                   "Maintaining 99%+ server uptime...",
@@ -61,15 +76,19 @@ export default function Hero() {
               />
             </p>
 
-            <p className="mt-6 max-w-xl text-sm leading-relaxed text-muted sm:text-base">
+            <div className="order-2 mt-6 lg:hidden">
+              <TerminalCard />
+            </div>
+
+            <p className="order-4 mt-6 max-w-xl text-sm leading-relaxed text-muted sm:order-4 sm:mt-6 sm:text-base">
               {profile.intro}
             </p>
 
-            <p className="mt-3 text-sm text-muted">
+            <p className="order-5 mt-3 text-sm text-muted">
               {profile.location} · {profile.phone}
             </p>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
+            <div className="order-6 mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
               <a href={profile.resumeUrl} download className="btn-primary gap-2 sm:px-6 sm:py-3">
                 <DownloadIcon />
                 Download Resume
@@ -96,7 +115,7 @@ export default function Hero() {
               </a>
             </div>
 
-            <div className="mt-10 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-border pt-6">
+            <div className="order-7 mt-10 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-border pt-6">
               {socialProof.map((item, i) => (
                 <span key={item} className="flex items-center gap-4 text-xs text-muted sm:text-sm">
                   {i > 0 && <span className="hidden h-1 w-1 rounded-full bg-border sm:inline" />}
@@ -115,15 +134,6 @@ export default function Hero() {
             <TerminalCard />
           </motion.div>
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-10 lg:hidden"
-        >
-          <TerminalCard />
-        </motion.div>
       </div>
     </section>
   );

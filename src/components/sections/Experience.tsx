@@ -36,7 +36,10 @@ export default function Experience() {
                 transition={defaultTransition}
                 className="relative pl-8 md:pl-12"
               >
-                <span className="absolute left-0 top-6 h-[18px] w-[18px] rounded-full border-2 border-accent bg-white md:h-[22px] md:w-[22px]" />
+                <span
+                  className="absolute left-0 top-6 h-[18px] w-[18px] rounded-full border-2 bg-white md:h-[22px] md:w-[22px]"
+                  style={{ borderColor: job.accent }}
+                />
 
                 <div className="glass glass-hover rounded-2xl p-6 md:p-8">
                   <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
@@ -44,7 +47,7 @@ export default function Experience() {
                       <h3 className="text-lg font-semibold text-foreground md:text-xl">
                         {job.role}
                       </h3>
-                      <p className="text-accent">{job.company}</p>
+                      <p style={{ color: job.accent }}>{job.company}</p>
                       <p className="text-xs text-muted">{job.location}</p>
                     </div>
                     <span className="shrink-0 font-mono text-xs text-muted md:text-sm">
@@ -58,7 +61,10 @@ export default function Experience() {
                         key={item}
                         className="flex items-start gap-2 text-sm text-muted"
                       >
-                        <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-accent" />
+                        <span
+                          className="mt-1.5 h-1 w-1 shrink-0 rounded-full"
+                          style={{ backgroundColor: job.accent }}
+                        />
                         {item}
                       </li>
                     ))}

@@ -37,13 +37,21 @@ export default function Homelab() {
         </Reveal>
 
         <Reveal delay={0.05}>
-          <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <div
+            role="tablist"
+            aria-label="Homelab study tracks"
+            className="mb-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap"
+          >
             {homelab.studyTracks.map((track) => {
               const isActive = track.id === activeId;
               return (
                 <button
                   key={track.id}
                   type="button"
+                  role="tab"
+                  id={`homelab-tab-${track.id}`}
+                  aria-selected={isActive}
+                  aria-controls={`homelab-panel-${track.id}`}
                   onClick={() => setActiveId(track.id)}
                   className={`relative rounded-xl px-4 py-3 text-left text-sm font-medium transition-all duration-300 sm:px-5 sm:py-3.5 sm:text-base ${
                     isActive
@@ -77,6 +85,9 @@ export default function Homelab() {
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTrack.id}
+            role="tabpanel"
+            id={`homelab-panel-${activeTrack.id}`}
+            aria-labelledby={`homelab-tab-${activeTrack.id}`}
             initial={reducedMotion ? false : { opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={reducedMotion ? undefined : { opacity: 0, y: -8 }}
